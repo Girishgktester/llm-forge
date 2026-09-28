@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 from langchain.agents import create_agent
 
 load_dotenv()
+from core.langsmith_config import configure_langsmith
+configure_langsmith()
 
 system_prompt = """You are an AI QA Test Case Generator.
 

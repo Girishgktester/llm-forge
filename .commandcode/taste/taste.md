@@ -1,0 +1,2 @@
+- Prefers descriptive, meaningful git commit messages that summarize the change (e.g., "Add web search tool agent"), not vague or generic ones. Confidence: 0.8
+- Communicates with terse commands ("push", "commit and push") and expects the agent to complete the full git workflow — stage all changes, write a good commit message, and push — without asking for clarification. Confidence: 0.7

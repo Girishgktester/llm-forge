@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(python -c \"import tavily; print('tavily', tavily.__version__ if hasattr(tavily,'__version__') else 'installed')\")",
+      "Shell(python -c \"import langchain; from langchain.agents import create_agent; print('create_agent ok')\")",
+      "Shell(.venvScriptspython.exe:*)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}
