@@ -1,10 +1,12 @@
-import os
-import sys
+from typing import Any
 
+from langsmith import traceable
 from core.agent_factory import create_basic_agent
 from core.langsmith_config import configure_langsmith
 from utils.env_loader import load_env
-
+from tavily import TavilyClient
+import os
+import sys
 
 def main() -> None:
     load_env()
@@ -17,3 +19,10 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+@traceable(name="tavily_search", run_type="tool")
+def search_web(query: str):
+    client = TavilyClient(api_key=os.getenv("TAVILI_API_KEY"))
+    return client.search(query)
+
+print(search_web[Any, Any]("Who is Leo Messi?"))
