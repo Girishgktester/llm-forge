@@ -1,3 +1,4 @@
+import streamlit as st
 import os
 import sys
 
@@ -45,36 +46,28 @@ agent = create_agent(
     model="ollama:qwen3:8b",
     system_prompt=(
         "Act as a news reporter. "
-        "Fetch the latest news and summarize it in 5 short bullet points."
+        "Summarize latest AI news 5 bullet points."
     ),
     tools=[get_news, summary_news],
 )
 
+st.title("AI News Agent")
 
-result = agent.invoke(
-    {
-        "messages": [
+with st.form("search_form"):
+    userquery = st.text_input("Enter your query")
+    submitted = st.form_submit_button("Search")
+
+if submitted and userquery.strip():
+    with st.spinner("Hmm wait for few seconds i am running in local model"):
+        result = agent.invoke(
             {
-                "role": "user",
-                "content": "Fetch the latest news about AI."
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": userquery
+                    }
+                ]
             }
-        ]
-    }
-)
+        )
+    st.write(result["messages"][-1].content)
 
-print(result["messages"][-1].content)
-
-
-# ✓ Tool works
-# ✓ Tool returns empty result
-# ✓ Tool throws exception
-# ✓ API timeout
-# ✓ Invalid input
-# ✓ API unavailable
-# ✓ Agent repeatedly calls tool
-# ✓ Tool returns malformed data
-
-
-# 2. Use LangChain Runnables
-
-# execution order

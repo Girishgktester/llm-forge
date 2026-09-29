@@ -1,2 +1,3 @@
 - Prefers descriptive, meaningful git commit messages that summarize the change (e.g., "Add web search tool agent"), not vague or generic ones. Confidence: 0.8
 - Communicates with terse commands ("push", "commit and push") and expects the agent to complete the full git workflow — stage all changes, write a good commit message, and push — without asking for clarification. Confidence: 0.7
+- Wants fixes and features kept simple and "beginner-friendly" (explicitly asked to "fix it in easy beginner way" and to "keep everything too basic" for a Streamlit UI) — prefers minimal, easy-to-understand changes over elaborate refactors or extra state/features (e.g., declined session_state persistence), and explanations that spell out what was wrong in plain terms. Confidence: 0.85
