@@ -1,10 +1,8 @@
 import os
 import sys
-
 # Running this file directly puts Daily/ on sys.path, not the project root.
 # Add the project root so the "core" package can be imported.
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from langchain.agents import create_agent
 from langchain.tools import tool
 from dotenv import load_dotenv
