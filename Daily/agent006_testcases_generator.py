@@ -3,7 +3,6 @@ from langchain.tools import tool
 from langchain_ollama import ChatOllama
 import streamlit as st
 
-
 @tool
 def generate_Testcases(requirement: str) -> str:
     """Generate manual test cases for the given requirement using Qwen."""

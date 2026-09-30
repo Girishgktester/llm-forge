@@ -1,0 +1,30 @@
+{
+  "name": "llm-forge",
+  "version": "1.0.0",
+  "description": "A small learning project for running one LangChain agent in two ways: an online OpenAI model, or a local Qwen model through Ollama. LangSmith tracing is turned on so each run can be inspected.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Girishgktester/llm-forge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Girishgktester/llm-forge/issues"
+  },
+  "homepage": "https://github.com/Girishgktester/llm-forge#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
+  }
+}
