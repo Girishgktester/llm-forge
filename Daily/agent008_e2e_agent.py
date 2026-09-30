@@ -88,7 +88,7 @@ def execute_test(test_code: str) -> str:
 agent = create_agent(model="openai:gpt-4o-mini", system_prompt=
                      """Act as a senior SDET.
                      Always follow these steps in order using the tools:
-                     1. Use analyze_Requirement to create the manual test case.
+                       1. Use analyze_Requirement to create the manual test case.
                      2. Use generates_tests to turn that test case into Playwright TypeScript code.
                      3. Use execute_test to save and run that code, then report the result.""",
                      tools=[analyze_Requirement, generates_tests, execute_test])
