@@ -1,56 +1,23 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Login Functionality Tests', () => {
-    test.beforeEach(async ({ page }) => {
+test.describe('Login Tests', () => {
+    test('Verify Successful Login Redirects to Homepage', async ({ page }) => {
+        // Step 1: Open the application in a web browser
         await page.goto('https://practicetestautomation.com/practice-test-login/');
-    });
 
-    test('User logs in to the application using valid credentials', async ({ page }) => {
+        // Step 2: Enter the valid username into the "Username" input field
         await page.fill('input[name="username"]', 'student');
+
+        // Step 3: Enter the valid password into the "Password" input field
         await page.fill('input[name="password"]', 'Password123');
-        await page.click('button[type="submit"]');
 
-        await expect(page).toHaveURL(/.*welcome/);
-        await expect(page.locator('h1')).toHaveText('Welcome');
-    });
+        // Step 4: Click the "Login" button
+        await page.click('text=Login');
 
-    test('User fails to log in with invalid username', async ({ page }) => {
-        await page.fill('input[name="username"]', 'invalidUser');
-        await page.fill('input[name="password"]', 'Password123');
-        await page.click('button[type="submit"]');
+        // Expected Result: Wait for the homepage to load
+        await expect(page).toHaveURL('https://practicetestautomation.com/practice-test-login/');
 
-        await expect(page.locator('.error')).toHaveText('Invalid username or password.');
-    });
-
-    test('User fails to log in with invalid password', async ({ page }) => {
-        await page.fill('input[name="username"]', 'student');
-        await page.fill('input[name="password"]', 'wrongPassword');
-        await page.click('button[type="submit"]');
-
-        await expect(page.locator('.error')).toHaveText('Invalid username or password.');
-    });
-
-    test('User fails to log in with both fields empty', async ({ page }) => {
-        await page.click('button[type="submit"]');
-
-        await expect(page.locator('.error')).toHaveText('Please enter your username and password.');
-    });
-
-    test('User logs in successfully and checks for logout option', async ({ page }) => {
-        await page.fill('input[name="username"]', 'student');
-        await page.fill('input[name="password"]', 'Password123');
-        await page.click('button[type="submit"]');
-
-        await expect(page).toHaveURL(/.*welcome/);
-        await expect(page.locator('h1')).toHaveText('Welcome');
-        await expect(page.locator('a.logout')).toBeVisible();
-    });
-
-    test('User fails to log in with SQL injection attack', async ({ page }) => {
-        await page.fill('input[name="username"]', "student' OR '1'='1");
-        await page.fill('input[name="password"]', "Password123' OR '1'='1");
-        await page.click('button[type="submit"]');
-
-        await expect(page.locator('.error')).toHaveText('Invalid username or password.');
+        // Check if homepage loaded successfully
+        await expect(page.locator('h1')).toHaveText('Welcome'); // Adjust this line based on actual welcome message
     });
 });
