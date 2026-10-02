@@ -1,8 +1,7 @@
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import ChatOpenAI
-from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_community.chat_message_histories.sql import SQLChatMessageHistory
 
 from dotenv import load_dotenv
 
@@ -23,12 +22,12 @@ chain = template | llm
 
 store = {}
 
-def get_session_history(session_id: str) -> BaseChatMessageHistory:
-    if session_id not in store:
-        store[session_id] = ChatMessageHistory()
-    return store[session_id]
-
-
+def get_session_history(session_id: str):
+    return SQLChatMessageHistory(
+        session_id=session_id,
+        connection="sqlite:///chathistory.db",
+    )
+    
 history = RunnableWithMessageHistory(
     chain,
     get_session_history,
