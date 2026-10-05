@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "atlassian": {
+      "url": "https://mcp.atlassian.com/v2/mcp",
+      "headers":{
+        "Authorization": "Basic BASE64_ENCODED_EMAIL_AND_TOKEN"
+      }
+    }
+  }
+}
+
+email:token - base64 -string
+
+
+9b8176b0-c72e-451f-a4ad-b1d75c855b52
+
+https://girishgk403.atlassian.net/
