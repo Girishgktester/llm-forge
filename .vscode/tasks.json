@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Streamlit agent chat",
+			"type": "shell",
+			"command": "streamlit",
+			"args": [
+				"run",
+				"Daily\\agent016_agent_streamlint.py"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

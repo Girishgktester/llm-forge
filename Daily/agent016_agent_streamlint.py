@@ -20,9 +20,8 @@ configure_langsmith()
 class ChatAssistant:
     def __init__(self):
         llm = ChatOpenAI(
-            model="gpt-4o-mini",
-            temperature=0,
-            max_tokens=200,
+            model="gpt-6-luna",
+            max_tokens=500,
         )
         template = ChatPromptTemplate.from_messages([
             ("system", "You are a helpful assistant."),
