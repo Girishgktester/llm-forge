@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 # Add the project folder to Python's import path when this file is run directly.
-project_root = Path(__file__).resolve().parent.parent
+project_root = Path(__file__).resolve().parent.parent.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
@@ -72,5 +72,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
     
-
 

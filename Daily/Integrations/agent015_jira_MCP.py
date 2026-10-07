@@ -17,7 +17,7 @@ from mcp.shared.auth import (
     OAuthToken,
 )
 
-PROJECT_FOLDER = Path(__file__).resolve().parents[1]
+PROJECT_FOLDER = Path(__file__).resolve().parents[2]
 load_dotenv(PROJECT_FOLDER / ".env")
 
 MCP_URL = os.getenv("MCP_BASE_URL", "https://mcp.atlassian.com/v2/mcp")
