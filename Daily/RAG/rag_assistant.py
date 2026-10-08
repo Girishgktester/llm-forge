@@ -60,4 +60,4 @@ result = (prompt | llm).invoke({"context": context, "question": query})
 
 print(result.content)
 
-result =llm.invoke(prompt)
+
