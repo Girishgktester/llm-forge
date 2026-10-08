@@ -1,0 +1,40 @@
+QA Automation Guidelines
+
+Login Testing:
+The login page must accept a valid username and password.
+If the user enters an invalid password, the application must display
+"Invalid username or password".
+After 5 consecutive failed login attempts, the account must be locked
+for 30 minutes.
+
+Password Requirements:
+The password must contain at least 8 characters.
+It must contain at least one uppercase letter.
+It must contain at least one lowercase letter.
+It must contain at least one number.
+It must contain at least one special character.
+
+Checkout Testing:
+Users must be logged in before checkout.
+The cart must contain at least one product.
+The application supports Credit Card, Debit Card and UPI payments.
+If payment fails, the order must not be created.
+
+API Testing:
+All secured APIs require a valid authentication token.
+If the authentication token is missing, the API must return HTTP 401.
+If the user does not have permission, the API must return HTTP 403.
+Successful GET requests should return HTTP 200.
+Successful resource creation should return HTTP 201.
+
+Performance Testing:
+The login API should respond within 2 seconds.
+The checkout API should respond within 3 seconds.
+The application should support 1000 concurrent users.
+
+Bug Severity Guidelines:
+Application crash is Critical severity.
+Payment failure is Critical severity.
+Login failure for all users is High severity.
+UI alignment issues are Low severity.
+Spelling mistakes are Low severity.

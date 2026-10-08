@@ -25,11 +25,33 @@ LLM_Forge/
 │   └── agent_factory.py       # create_agent() for the selected mode
 ├── utils/
 │   └── env_loader.py          # loads .env
+├── Daily/
+│   ├── Fundamentals/           # Basic models, prompts, and runnables
+│   ├── Tools_and_Agents/       # Tools, agent examples, and test generation
+│   ├── Chat_and_Memory/        # Chat history and Streamlit chat
+│   ├── Integrations/           # External service integrations
+│   └── RAG/                    # Retrieval-augmented generation example
 ├── .env.example               # template for local secrets and LLM_MODE
 ├── .gitignore                 # keeps .env and the virtualenv out of git
 ├── requirements.txt
 ├── main.py
 └── README.md
+```
+
+The numbered learning examples are grouped by topic under `Daily/`. There are two
+`agent014` examples: model selection is in `Fundamentals`, and requirement analysis
+is in `Tools_and_Agents`.
+
+`Daily/RAG/rag_assistant.py` contains a basic in-memory RAG class. Pass it a
+LangChain chat model and embeddings implementation, call `add_text()` with source
+text, then call `ask()` with a question. Documents are split into chunks and the
+three most similar chunks are provided to the model as context. The vector store
+is in memory and is rebuilt when the class is created.
+
+Run the Streamlit chat example from the project root with:
+
+```powershell
+streamlit run Daily\Chat_and_Memory\agent016_agent_streamlint.py
 ```
 
 ## Prerequisites
