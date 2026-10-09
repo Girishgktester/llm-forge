@@ -15,12 +15,10 @@ with DATA_SET_PATH.open("r", encoding="utf-8") as file:
 
 document = Document(page_content=raw_text, metadata={"source": str(DATA_SET_PATH)})
 
-splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=50)
+splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=10)
 chunks = splitter.split_documents([document])
 
-
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-
 
 vstore = Chroma.from_documents(
     documents=chunks,
@@ -29,11 +27,13 @@ vstore = Chroma.from_documents(
     persist_directory="./chroma_db",
 )
 
-
-retriever = vstore.as_retriever(search_kwargs={"k": 2})
+retriever = vstore.as_retriever(search_kwargs={"k": 3})
 
 query = "Login falire is what severity"
+print(f"Querying retriever with: {retriever}")
 documents = retriever.invoke(query)
+
+print(f"Retrieved document metadata: {documents}")
 
 llm = ChatOpenAI(model="gpt-6-luna")
 
@@ -50,10 +50,13 @@ Question: {question}"""
 context = []
 
 for doc in documents:
+    print(f"Retrieved document metadata: {doc}")
     context.append(doc.page_content)
 
 context = "\n\n".join(context)
 
-result = (prompt | llm).invoke({"context": context, "question": query})
+print(f"Final context for prompt: {context}...")  # Print first 200 characters of the final context
 
-print(result.content)
+# result = (prompt | llm).invoke({"context": context, "question": query})
+
+# print(result.content)
