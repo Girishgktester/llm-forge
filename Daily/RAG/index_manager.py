@@ -70,3 +70,17 @@ def index_sources(results: list[dict]) -> list[dict]:
         print(f"INDEXED: {source_id} ({len(chunks)} chunks)")
 
     return successful_sources
+
+def delete_sources(source_ids: list[str]) -> None:
+    if not source_ids:
+        return
+
+    vstore = Chroma(
+        collection_name=COLLECTION_NAME,
+        embedding_function=embeddings,
+        persist_directory=DB_PATH,
+    )
+
+    for source_id in source_ids:
+        vstore.delete(where={"source": source_id})
+        print(f"DELETED: {source_id}")

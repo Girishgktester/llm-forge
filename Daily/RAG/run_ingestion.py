@@ -2,7 +2,8 @@ from source_loader import load_sources
 from manifest_manager import load_manifest, save_manifest
 from change_detector import detect_changes
 from index_manager import index_sources
-
+from change_detector import detect_changes, detect_deleted_sources
+from index_manager import index_sources, delete_sources
 
 def run_ingestion():
     # 1. Load current source content
@@ -22,6 +23,12 @@ def run_ingestion():
         manifest[source["source_id"]] = source["content_hash"]
 
     save_manifest(manifest)
+    
+    deleted_sources = detect_deleted_sources(sources, manifest)
+    delete_sources(deleted_sources)
+
+    for source_id in deleted_sources:
+        del manifest[source_id]
 
     print("\nIngestion completed.")
     print(f"Successfully indexed: {len(successful_sources)}")
@@ -29,3 +36,4 @@ def run_ingestion():
 
 if __name__ == "__main__":
     run_ingestion()
+    

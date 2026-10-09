@@ -23,3 +23,13 @@ def detect_changes(sources: list[dict], manifest: dict) -> list[dict]:
         })
 
     return results
+
+
+def detect_deleted_sources(sources: list[dict], manifest: dict) -> list[str]:
+    current_ids = {source["source_id"] for source in sources}
+
+    return [
+        source_id
+        for source_id in manifest
+        if source_id not in current_ids
+    ]
