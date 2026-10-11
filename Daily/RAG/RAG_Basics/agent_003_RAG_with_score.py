@@ -25,16 +25,26 @@ vstore = Chroma.from_documents(documents=chunks,
                       collection_name="qa_knowledge",
                       persist_directory="./chroma_db",
 )
-query = "fkjshfds"
+query = "Login is failing with error code 500. What could be the reason?"
 
-results = vstore.similarity_search_with_score(
-    query,
-    k=3
+# results = vstore.similarity_search_with_score(
+#     query,
+#     k=3
+# )
+
+
+
+
+retriever = vstore.as_retriever(
+    search_type="mmr",
+    search_kwargs={
+        "k": 2,
+        "fetch_k": 5,
+        "lambda_mult": 0.5
+    }
 )
-for document, score in results:
-    print("Content:", document.page_content)
-    print("Distance:", score)
-    print("Metadata:", document.metadata)
-    print("-" * 50)
 
+documents = retriever.invoke(query)
 
+for document in documents:
+    print(document.page_content)
