@@ -68,3 +68,4 @@ print(f"Final context for prompt: {context}...")  # Print first 200 characters o
 result = (prompt | llm | StrOutputParser() ).invoke({"context": context, "question": query})
 
 print(result)
+ 
