@@ -5,7 +5,10 @@
       "Shell(python -c \"import langchain; from langchain.agents import create_agent; print('create_agent ok')\")",
       "Shell(.venvScriptspython.exe:*)",
       "Shell(ren:*)",
-      "Shell(powershell -Command \"New-Item -ItemType Directory -Force -Path 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain', 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langgraph'; Get-ChildItem 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily' -Exclude @('langchain','langgraph') | Move-Item -Destination 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain' -Force\")"
+      "Shell(powershell -Command \"New-Item -ItemType Directory -Force -Path 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain', 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langgraph'; Get-ChildItem 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily' -Exclude @('langchain','langgraph') | Move-Item -Destination 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain' -Force\")",
+      "Shell(python \"c:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langgraph\\second_langgrpah.py\")",
+      "Shell(pip:*)",
+      "Shell(git:*)"
     ],
     "deny": [],
     "defaultMode": "default"
