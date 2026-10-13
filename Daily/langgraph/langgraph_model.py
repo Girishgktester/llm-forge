@@ -1,11 +1,8 @@
 from dotenv import load_dotenv
 from typing import TypedDict
-
 from langgraph.graph import StateGraph, START, END
 from langchain_openai import ChatOpenAI
-
 load_dotenv()
-
 
 class GraphState(TypedDict):
     """Basic state for the LangGraph workflow."""
@@ -27,3 +24,10 @@ workflow.add_edge(START, "chat")
 workflow.add_edge("chat", END)
 
 app = workflow.compile()
+graph = app.get_graph()
+print(graph.draw_mermaid())
+print(graph.draw_ascii())
+
+response =  app.invoke({"messages": [{"role": "user", "content": "Hi"}]})
+
+print(response["result"])
