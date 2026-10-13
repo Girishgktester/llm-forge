@@ -11,7 +11,7 @@ import requests
 
 load_dotenv()
 
-DATA_SET_PATH = Path(__file__).resolve().parents[2] / "dataset" / "qa_knowledge.txt"
+DATA_SET_PATH = Path(__file__).resolve().parents[3] / "dataset" / "qa_knowledge.txt"
 
 with DATA_SET_PATH.open("r", encoding="utf-8") as file:
     raw_text = file.read()
@@ -45,13 +45,15 @@ splitter = RecursiveCharacterTextSplitter(chunk_size = 800, chunk_overlap=100)
 
 chunks = splitter.split_documents([documents])
 
+WEBCHROMA_DB_PATH = str(Path(__file__).resolve().parents[2] / ".." / ".." / "web_chroma_db").replace("\\", "/")
+
 embedings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 vstore = Chroma.from_documents(
             documents=chunks,
             embedding=embedings,
             collection_name="webpage_knowledge",
-            persist_directory="./web_chroma_db"
+            persist_directory=WEBCHROMA_DB_PATH
 )
 
 retriever = vstore.as_retriever(search_kwargs={"k": 2})

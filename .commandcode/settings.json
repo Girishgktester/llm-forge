@@ -4,7 +4,8 @@
       "Shell(python -c \"import tavily; print('tavily', tavily.__version__ if hasattr(tavily,'__version__') else 'installed')\")",
       "Shell(python -c \"import langchain; from langchain.agents import create_agent; print('create_agent ok')\")",
       "Shell(.venvScriptspython.exe:*)",
-      "Shell(ren:*)"
+      "Shell(ren:*)",
+      "Shell(powershell -Command \"New-Item -ItemType Directory -Force -Path 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain', 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langgraph'; Get-ChildItem 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily' -Exclude @('langchain','langgraph') | Move-Item -Destination 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain' -Force\")"
     ],
     "deny": [],
     "defaultMode": "default"

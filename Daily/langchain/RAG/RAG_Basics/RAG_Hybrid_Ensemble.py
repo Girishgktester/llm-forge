@@ -73,11 +73,13 @@ embeddings = OpenAIEmbeddings(
 )
 
 # 6. Build Chroma vector store
+WEBCHROMA_DB_PATH = str(Path(__file__).resolve().parents[2] / ".." / ".." / "web_chroma_db").replace("\\", "/")
+
 vstore = Chroma.from_documents(
     documents=chunks,
     embedding=embeddings,
     collection_name="webpage_knowledge",
-    persist_directory="./web_chroma_db",
+    persist_directory=WEBCHROMA_DB_PATH,
 )
 
 # 7. Semantic search using Chroma

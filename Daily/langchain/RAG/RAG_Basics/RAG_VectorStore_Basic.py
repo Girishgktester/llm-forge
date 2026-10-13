@@ -8,7 +8,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
 
-DATA_SET_PATH = Path(__file__).resolve().parents[2] / "dataset" / "qa_knowledge.txt"
+DATA_SET_PATH = Path(__file__).resolve().parents[3] / "dataset" / "qa_knowledge.txt"
 
 with DATA_SET_PATH.open("r", encoding="utf-8") as file:
     raw_text = file.read()
@@ -20,11 +20,13 @@ chunks = splitter.split_documents([document])
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
+CHROMA_DB_PATH = str(Path(__file__).resolve().parents[2] / ".." / ".." / "chroma_db").replace("\\", "/")
+
 vstore = Chroma.from_documents(
     documents=chunks,
     embedding=embeddings,
     collection_name="qa_knowledge",
-    persist_directory="./chroma_db",
+    persist_directory=CHROMA_DB_PATH,
 )
 
 retriever = vstore.as_retriever(search_kwargs={"k": 3})

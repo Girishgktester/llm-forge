@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_PATH = "./web_chroma_db"
+DB_PATH = str(Path(__file__).parent / ".." / ".." / "web_chroma_db").replace("\\", "/")
 COLLECTION_NAME = "webpage_knowledge"
 
 embeddings = OpenAIEmbeddings(

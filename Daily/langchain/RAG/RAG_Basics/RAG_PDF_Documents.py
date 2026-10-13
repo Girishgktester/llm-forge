@@ -8,7 +8,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
 
-DATASET_DIR = Path(__file__).resolve().parents[2] / "dataset"
+DATASET_DIR = Path(__file__).resolve().parents[3] / "dataset"
 pdf_files = sorted(DATASET_DIR.glob("*.pdf"))
 
 

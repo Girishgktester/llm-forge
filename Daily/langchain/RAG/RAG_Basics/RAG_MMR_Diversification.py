@@ -20,10 +20,12 @@ chunks = splitter.split_documents([document])
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
+CHROMA_DB_PATH = str(Path(__file__).resolve().parents[2] / ".." / ".." / "chroma_db").replace("\\", "/")
+
 vstore = Chroma.from_documents(documents=chunks,
-                      embedding=embeddings,
-                      collection_name="qa_knowledge",
-                      persist_directory="./chroma_db",
+                       embedding=embeddings,
+                       collection_name="qa_knowledge",
+                       persist_directory=CHROMA_DB_PATH,
 )
 query = "Login is failing with error code 500. What could be the reason?"
 
