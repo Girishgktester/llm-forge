@@ -1,0 +1,21 @@
+{
+  "dependencies": [
+    "langchain",
+    "langchain-openai",
+    "langgraph",
+    "langgraph-sdk",
+    "langsmith",
+    "python-dotenv",
+    "pydantic",
+    "httpx"
+  ],
+  "env": ".env",
+
+  "graphs": {
+    "basic_chat_summary": "./basic_chat_summary.py:grpah",
+
+    "simple_chat_workflow": "./simple_chat_workflow.py:app",
+
+    "test_case_generation_flow": "./test_case_generation_flow.py:graph"
+  }
+}
