@@ -8,7 +8,8 @@
       "Shell(powershell -Command \"New-Item -ItemType Directory -Force -Path 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain', 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langgraph'; Get-ChildItem 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily' -Exclude @('langchain','langgraph') | Move-Item -Destination 'C:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langchain' -Force\")",
       "Shell(python \"c:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langgraph\\second_langgrpah.py\")",
       "Shell(pip:*)",
-      "Shell(git:*)"
+      "Shell(git:*)",
+      "Shell(move:*)"
     ],
     "deny": [],
     "defaultMode": "default"
