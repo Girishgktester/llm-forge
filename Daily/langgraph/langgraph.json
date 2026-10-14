@@ -16,6 +16,8 @@
 
     "simple_chat_workflow": "./simple_chat_workflow.py:app",
 
-    "test_case_generation_flow": "./test_case_generation_flow.py:graph"
+    "test_case_generation_flow": "./test_case_generation_flow.py:graph",
+
+    "qa_automation": "./e2e.py:graph"
   }
 }

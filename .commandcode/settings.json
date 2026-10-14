@@ -9,7 +9,11 @@
       "Shell(python \"c:\\Users\\Girish Kulkarni\\OneDrive\\Documents\\llm-forge\\Daily\\langgraph\\second_langgrpah.py\")",
       "Shell(pip:*)",
       "Shell(git:*)",
-      "Shell(move:*)"
+      "Shell(move:*)",
+      "Shell(python -c import py_compile; py_compile.compile('Daily/langgraph/e2e.py', doraise=True))",
+      "Shell(.venvScriptspython:*)",
+      "Shell(.venvScriptspip:*)",
+      "Shell(cmd:*)"
     ],
     "deny": [],
     "defaultMode": "default"

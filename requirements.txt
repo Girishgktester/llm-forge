@@ -66,3 +66,4 @@ xxhash==4.0.1
 yarl==1.25.1
 zstandard==0.25.0
 pytest==8.4.2
+deepeval==4.2.8
