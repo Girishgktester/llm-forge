@@ -1,0 +1,16 @@
+{"ts": "2026-10-15T14:45:50.217099+00:00", "event": "session_start", "detail": {"reviewer": "Girish"}}
+{"ts": "2026-10-15T14:46:32.683547+00:00", "event": "generate_start", "detail": {"reviewer": "Girish", "retry": 0}}
+{"ts": "2026-10-15T14:46:45.755516+00:00", "event": "generate_success", "detail": {"len": 1049, "retry": 0}}
+{"ts": "2026-10-15T14:46:45.758516+00:00", "event": "review_edit_start", "detail": {"reviewer": "Girish"}}
+{"ts": "2026-10-15T14:46:59.793911+00:00", "event": "review_edit_update", "detail": {"reviewer": "Girish", "new_len": 19}}
+{"ts": "2026-10-15T14:46:59.796909+00:00", "event": "validate_start", "detail": {"retry": 0}}
+{"ts": "2026-10-15T14:46:59.799068+00:00", "event": "validate_complete", "detail": {"has_errors": true, "error_count": 2}}
+{"ts": "2026-10-15T14:46:59.801182+00:00", "event": "approval_request", "detail": {"reviewer": "Girish"}}
+{"ts": "2026-10-15T14:47:45.082140+00:00", "event": "session_start", "detail": {"reviewer": "GK"}}
+{"ts": "2026-10-15T14:47:51.481387+00:00", "event": "generate_start", "detail": {"reviewer": "GK", "retry": 0}}
+{"ts": "2026-10-15T14:48:07.622515+00:00", "event": "generate_success", "detail": {"len": 1186, "retry": 0}}
+{"ts": "2026-10-15T14:48:07.622515+00:00", "event": "review_edit_start", "detail": {"reviewer": "GK"}}
+{"ts": "2026-10-15T14:48:07.622515+00:00", "event": "review_edit_keep", "detail": {"reviewer": "GK"}}
+{"ts": "2026-10-15T14:48:07.636525+00:00", "event": "validate_start", "detail": {"retry": 0}}
+{"ts": "2026-10-15T14:48:07.637233+00:00", "event": "validate_complete", "detail": {"has_errors": true, "error_count": 1}}
+{"ts": "2026-10-15T14:48:07.639389+00:00", "event": "approval_request", "detail": {"reviewer": "GK"}}
