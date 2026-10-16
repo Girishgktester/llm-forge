@@ -14,6 +14,7 @@ class QAState(TypedDict):
     requirement: str
     test_case: str
     approval: bool
+    
 
 
 def generate_testcases(state: QAState):
