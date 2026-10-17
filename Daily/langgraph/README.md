@@ -85,9 +85,16 @@ result = graph.invoke({
 
 Runs will appear in [LangSmith](https://smith.langchain.com) under the project set in `LANGSMITH_PROJECT`.
 
-### Deploy with LangGraph CLI
+### Start the local Studio API
+From the repository root, run:
+```bash
+cd Daily/langgraph
+langgraph dev
+```
+Keep the server running and open the Studio URL printed by the command.
+
+For LangGraph Cloud deployment, install the CLI and authenticate separately:
 ```bash
 pip install langgraph-cli
-langgraph up          # Start local dev server
-langgraph cloud login # Login to LangGraph Cloud
+langgraph cloud login
 ```

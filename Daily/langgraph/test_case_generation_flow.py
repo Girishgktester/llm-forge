@@ -100,10 +100,11 @@ builder.add_edge("api_automation", END)
 
 graph = builder.compile()
 
-print(graph.get_graph().draw_ascii())
+if __name__ == "__main__":
+    print(graph.get_graph().draw_ascii())
 
-print('\n=== API FEATURE ===')
-print(graph.invoke({
-    "feature": "Create User API",
-    "description": "POST /api/users endpoint that creates user and returns JSON response"
-}))
+    print('\n=== API FEATURE ===')
+    print(graph.invoke({
+        "feature": "Create User API",
+        "description": "POST /api/users endpoint that creates user and returns JSON response"
+    }))

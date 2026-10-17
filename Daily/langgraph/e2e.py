@@ -427,7 +427,7 @@ builder.add_conditional_edges(
     {"api_automation": "api_automation", END: END},
 )
 
-graph = builder.compile(checkpointer=MemorySaver())
+graph = builder.compile()
 
 
 # -----------------------------
@@ -511,6 +511,8 @@ def human_input_loop():
 
 
 if __name__ == "__main__":
+    graph = builder.compile(checkpointer=MemorySaver())
+
     # ----- UI Example -----
     config = {"configurable": {"thread_id": "qa-ui-001"}}
 
