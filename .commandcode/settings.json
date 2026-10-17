@@ -10,10 +10,13 @@
       "Shell(pip:*)",
       "Shell(git:*)",
       "Shell(move:*)",
-      "Shell(python -c import py_compile; py_compile.compile('Daily/langgraph/e2e.py', doraise=True))",
+      "Shell(python -c import py_compile; py_compile.compile('Daily/langgraph/graph_qa_automation.py', doraise=True))",
       "Shell(.venvScriptspython:*)",
       "Shell(.venvScriptspip:*)",
-      "Shell(cmd:*)"
+      "Shell(cmd:*)",
+      "Shell(python -c  import importlib.util, sys spec = importlib.util.spec_from_file_location('mod', 'Daily/langgraph/graph_playwright_test_generation.py') # Just compile-check the file with open('Daily/langgraph/graph_playwright_test_generation.py') as f: compile(f.read(), 'graph_playwright_test_generation.py', 'exec') print('Syntax OK') )",
+      "Shell(python -c \"code = open(r'Daily/langgraph/graph_playwright_test_generation.py').read(); compile(code, 'test', 'exec'); print('Syntax OK')\")",
+      "powershell"
     ],
     "deny": [],
     "defaultMode": "default"

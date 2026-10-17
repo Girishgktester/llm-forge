@@ -9,15 +9,19 @@
     "pydantic",
     "httpx"
   ],
-  "env": ".env",
+  "env": "../.env",
 
   "graphs": {
-    "basic_chat_summary": "./basic_chat_summary.py:grpah",
+    "graph_chat_summary": "./graph_chat_summary.py:graph",
 
-    "simple_chat_workflow": "./simple_chat_workflow.py:app",
+    "graph_simple_chat": "./graph_simple_chat.py:app",
 
-    "test_case_generation_flow": "./test_case_generation_flow.py:graph",
+    "graph_testcase_automation": "./graph_testcase_automation.py:graph",
 
-    "qa_automation": "./e2e.py:graph"
+    "graph_qa_automation": "./graph_qa_automation.py:graph",
+
+    "graph_playwright_test_generation": "./graph_playwright_test_generation.py:graph",
+
+    "graph_tool_calling_workflow": "./graph_tool_calling_workflow.py:graph"
   }
 }

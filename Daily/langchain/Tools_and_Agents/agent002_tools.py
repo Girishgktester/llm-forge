@@ -2,7 +2,6 @@ from langchain.agents import create_agent
 from langchain.tools import tool
 from dotenv import load_dotenv
 load_dotenv()
-# configure_langsmith()
 
 @tool
 def generate_login_testcases(requirement: str) -> str:

@@ -9,14 +9,12 @@ load_dotenv()
 
 llm = ChatOpenAI(model="gpt-6-luna")
 
-
 class QAState(TypedDict):
     requirement: str
     test_case: str
     approval: bool
     feedback: str
     decision: str
-
 
 def generate_testcases(state: QAState):
     if state["feedback"]:

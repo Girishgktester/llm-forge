@@ -24,10 +24,11 @@ workflow.add_edge(START, "chat")
 workflow.add_edge("chat", END)
 
 app = workflow.compile()
-graph = app.get_graph()
-print(graph.draw_mermaid())
-print(graph.draw_ascii())
 
-response =  app.invoke({"messages": [{"role": "user", "content": "Hi"}]})
+if __name__ == "__main__":
+    graph = app.get_graph()
+    print(graph.draw_mermaid())
+    print(graph.draw_ascii())
 
-print(response["result"])
+    response = app.invoke({"messages": [{"role": "user", "content": "Hi"}]})
+    print(response["result"])

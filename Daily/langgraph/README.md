@@ -40,27 +40,40 @@
 
 ## Graphs
 
-### 1. basic_chat_summary (`./basic_chat_summary.py:grpah`)
-- **State:** `TypeState` → `prompt`, `response`, `summary`
-- **Nodes:** `node1` (LLM invoke), `node2` (LLM summarize)
-- **Edges:** START → node1 → node2 → END
-- **Purpose:** Two-step chat flow with auto-summary
+Studio graph IDs use the same `graph_` prefix as their module filenames:
 
-### 2. simple_chat_workflow (`./simple_chat_workflow.py:app`)
-- **State:** `GraphState` → `messages`, `result`
-- **Nodes:** `chat_node` (single LLM call)
-- **Edges:** START → chat → END
-- **Purpose:** Simple single-turn chatbot
+| Studio graph ID | Module | Purpose |
+|---|---|---|
+| `graph_chat_summary` | `graph_chat_summary.py` | Summarize a chat in two LLM steps |
+| `graph_simple_chat` | `graph_simple_chat.py` | Single-turn chat |
+| `graph_testcase_automation` | `graph_testcase_automation.py` | Classify a requirement, create test cases, then generate UI or API automation |
+| `graph_qa_automation` | `graph_qa_automation.py` | Generate and evaluate test cases and automation with human review |
+| `graph_playwright_test_generation` | `graph_playwright_test_generation.py` | Generate test cases, pause for approval, then generate and validate Playwright code |
+| `graph_tool_calling_workflow` | `graph_tool_calling_workflow.py` | Chat assistant that can calculate basic arithmetic and return the current UTC time |
 
-### 3. test_case_generation_flow (`./test_case_generation_flow.py:graph`)
-- **State:** `TestState` → `feature`, `description`, `category`, `manual_testcases`, `ui_automation_code`, `api_automation_code`
-- **Nodes:** 
-  - `analyze` → classify feature as ui/api
-  - `testcases` → generate manual test cases
-  - `ui_automation` → generate Playwright TS code
-  - `api_automation` → generate pytest code
-- **Edges:** START → analyze → testcases → *[conditional]* → ui/api automation → END
-- **Purpose:** Requirement analyzer with test case generation + conditional routing
+To try `graph_tool_calling_workflow` in Studio, provide an initial state like:
+```json
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is (19 + 2) * 2? Use the calculator."
+    }
+  ]
+}
+```
+
+These standalone examples are also named with the `graph_` prefix:
+
+| Module | Purpose |
+|---|---|
+| `graph_human_approval_qa.py` | Human approval before answering a question |
+| `graph_testcase_approval.py` | Generate test cases and request approval |
+| `graph_testcase_approval_simple.py` | Basic test-case approval example |
+| `graph_testcase_feedback.py` | Generate test cases with an edit/approval loop |
+| `graph_testcase_review_audit.py` | Test-case review with retries, authorization, and audit logging |
+
+The standalone examples use console input or their own in-memory checkpointers and are intentionally not registered as Studio graphs.
 
 ## LangSmith / LangStudio Setup
 
@@ -76,7 +89,7 @@ export LANGSMITH_PROJECT="llm-forge"
 import os
 os.environ["LANGSMITH_TRACING_V2"] = "true"
 
-from test_case_generation_flow import graph
+from graph_testcase_automation import graph
 result = graph.invoke({
     "feature": "Create User API",
     "description": "POST /api/users endpoint"
