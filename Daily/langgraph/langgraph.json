@@ -22,6 +22,8 @@
 
     "graph_playwright_test_generation": "./graph_playwright_test_generation.py:graph",
 
-    "graph_tool_calling_workflow": "./graph_tool_calling_workflow.py:graph"
+    "graph_tool_calling_workflow": "./graph_tool_calling_workflow.py:graph",
+
+    "graph_tool_calling_with_messages": "./graph_tool_calling_with_messages.py:graph"
   }
 }
