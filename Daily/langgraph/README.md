@@ -4,6 +4,7 @@
 - `langchain==1.4.2`
 - `langchain-openai==1.6.4`
 - `langgraph==1.2.12`
+- `langgraph-cli[inmem]==0.4.41`
 - `langgraph-sdk==0.4.5`
 - `langsmith==0.14.0`
 - `python-dotenv==1.2.3`
@@ -112,12 +113,21 @@ result = graph.invoke({
 Runs will appear in [LangSmith](https://smith.langchain.com) under the project set in `LANGSMITH_PROJECT`.
 
 ### Start the local Studio API
-From the repository root, run:
+The graph paths in `langgraph.json` are relative to `Daily/langgraph`, so start the CLI from that directory (not the repository root):
 ```bash
 cd Daily/langgraph
 langgraph dev
 ```
 Keep the server running and open the Studio URL printed by the command.
+
+On Windows PowerShell, set UTF-8 output before starting the CLI:
+```powershell
+Set-Location .\Daily\langgraph
+if (-not (Test-Path .\langgraph.json)) { throw "Run this from the repository root; Daily\langgraph\langgraph.json was not found." }
+$env:PYTHONIOENCODING = "utf-8"
+langgraph dev
+```
+If you explicitly pass `--config`, run the command after changing into `Daily\langgraph` and use `--config .\langgraph.json`. Do not use `--config langgraph.json` from the repository root.
 
 For LangGraph Cloud deployment, install the CLI and authenticate separately:
 ```bash

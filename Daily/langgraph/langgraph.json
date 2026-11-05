@@ -24,6 +24,8 @@
 
     "graph_tool_calling_workflow": "./graph_tool_calling_workflow.py:graph",
 
-    "graph_tool_calling_with_messages": "./graph_tool_calling_with_messages.py:graph"
+    "graph_tool_calling_with_messages": "./graph_tool_calling_with_messages.py:graph",
+
+    "graph_basics": "./graph_basics.py:graph"
   }
 }
