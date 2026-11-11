@@ -9,7 +9,6 @@ from langgraph.prebuilt import ToolNode, tools_condition
 
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
-
 @tool
 def add_numbers(a: float, b: float) -> float:
     """Add two numbers and return their sum."""
