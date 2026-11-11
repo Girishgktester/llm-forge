@@ -26,6 +26,8 @@
 
     "graph_tool_calling_with_messages": "./graph_tool_calling_with_messages.py:graph",
 
+    "graph_tool_message_state": "./grpah_tool_message_state.py:graph",
+
     "graph_basics": "./graph_basics.py:graph"
   }
 }

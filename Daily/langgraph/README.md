@@ -52,6 +52,7 @@ Studio graph IDs use the same `graph_` prefix as their module filenames:
 | `graph_playwright_test_generation` | `graph_playwright_test_generation.py` | Generate test cases, pause for approval, then generate and validate Playwright code |
 | `graph_tool_calling_workflow` | `graph_tool_calling_workflow.py` | Chat assistant that can calculate basic arithmetic and return the current UTC time |
 | `graph_tool_calling_with_messages` | `graph_tool_calling_with_messages.py` | Helpful `MessagesState` assistant with an addition tool |
+| `graph_tool_message_state` | `grpah_tool_message_state.py` | `MessagesState` assistant with addition and subtraction tools |
 
 To try `graph_tool_calling_workflow` in Studio, provide an initial state like:
 ```json
@@ -72,6 +73,18 @@ To try `graph_tool_calling_with_messages`, use an input like:
     {
       "role": "user",
       "content": "What is 19.5 + 23.25? Use the addition tool."
+    }
+  ]
+}
+```
+
+To try `graph_tool_message_state`, use an input like:
+```json
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is 19.5 minus 3.25?"
     }
   ]
 }
