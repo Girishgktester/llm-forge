@@ -24,16 +24,16 @@ def sub_numbers(a: float, b: float) -> float:
 
 tools = [add_numbers, sub_numbers]
 model = ChatOpenAI(model="gpt-6-luna").bind_tools(tools)
+system_message = SystemMessage(
+    content=(
+        "You are a helpful assistant that can perform addition and "
+        "subtraction. Use the available tools for arithmetic."
+    )
+)
 
 
 def assistant(state: MessagesState) -> dict[str, list[AnyMessage]]:
     """Answer the user or request an arithmetic tool."""
-    system_message = SystemMessage(
-        content=(
-            "You are a helpful assistant that can perform addition and "
-            "subtraction. Use the available tools for arithmetic."
-        )
-    )
     response = model.invoke([system_message, *state["messages"]])
     return {"messages": [response]}
 
