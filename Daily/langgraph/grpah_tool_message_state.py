@@ -15,7 +15,6 @@ def add_numbers(a: float, b: float) -> float:
     """Add two numbers and return their sum."""
     return a + b
 
-
 @tool
 def sub_numbers(a: float, b: float) -> float:
     """Subtract the second number from the first."""
