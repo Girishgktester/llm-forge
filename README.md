@@ -1,150 +1,195 @@
 # LLM Forge
 
-A small learning project for running one LangChain agent in two ways: an online OpenAI model, or a local Qwen model through Ollama. LangSmith tracing is turned on so each run can be inspected.
+LLM Forge is a hands-on collection of experiments for building LLM applications with LangChain and LangGraph. It includes chat agents, tool calling, conversational memory, retrieval-augmented generation (RAG), QA/test automation workflows, and browser automation examples.
 
-## What it does
+The repository is a learning lab rather than a single packaged application: most files under `Daily/` are runnable examples that can be explored independently. The examples may use different providers and credentials; check each script's configuration before running it.
 
-`main.py` loads environment variables, enables LangSmith, builds an agent with LangChain `create_agent()`, and sends one example question:
+## What is included
 
-> Say hello in one sentence.
+- **LangChain fundamentals:** chat models, prompt templates, runnables, message history, and agent patterns.
+- **Tools and integrations:** tool calling, web search, Jira/MCP experiments, and test-case generation.
+- **LangGraph workflows:** stateful chat, summarization, arithmetic tools, branching QA flows, human approval, feedback/retry loops, and audit-oriented examples.
+- **RAG experiments:** vector search, keyword and hybrid retrieval, MMR, reranking, metadata, PDF and web-page ingestion, plus source-change detection and indexing utilities.
+- **QA automation:** example flows that classify a requirement, generate manual tests, and produce UI or API automation; some workflows add DeepEval evaluation and human review.
+- **Playwright and TypeScript:** browser-test examples and Playwright runner configuration.
+- **A simple root agent:** `main.py` selects an online Command Code model or a local Ollama model.
 
-The model depends on a single mode value, `online` or `offline`.
-
-| Mode | Model | Where it runs |
-| --- | --- | --- |
-| `online` | `gpt-4o-mini` | OpenAI API |
-| `offline` | `qwen3:8b` | Ollama on this machine |
-
-## Project layout
+## Repository layout
 
 ```text
-LLM_Forge/
-├── core/
-│   ├── langsmith_config.py   # LangSmith tracing settings
-│   ├── llm_config.py          # online/offline model names and the system prompt
-│   └── agent_factory.py       # create_agent() for the selected mode
-├── utils/
-│   └── env_loader.py          # loads .env
+.
+├── core/                         # Root agent/model selection and LangSmith setup
+├── utils/                        # Shared environment-loading helper
 ├── Daily/
-│   ├── Fundamentals/           # Basic models, prompts, and runnables
-│   ├── Tools_and_Agents/       # Tools, agent examples, and test generation
-│   ├── Chat_and_Memory/        # Chat history and Streamlit chat
-│   ├── Integrations/           # External service integrations
-│   └── RAG/                    # Retrieval-augmented generation example
-├── .env.example               # template for local secrets and LLM_MODE
-├── .gitignore                 # keeps .env and the virtualenv out of git
-├── requirements.txt
-├── main.py
-└── README.md
+│   ├── langchain/
+│   │   ├── Fundamentals/         # Model, prompt, and runnable examples
+│   │   ├── Tools_and_Agents/     # Tool and agent examples
+│   │   ├── Chat_and_Memory/      # Chat history and Streamlit example
+│   │   ├── Integrations/         # External integrations such as Jira/MCP
+│   │   └── RAG/                  # RAG demos and ingestion utilities
+│   └── langgraph/                # Graph definitions, Studio config, and guide
+├── dataset/                      # Example QA knowledge and guidelines
+├── tests/                        # Playwright TypeScript tests
+├── main.py                       # Root LangChain agent demo
+├── requirements.txt              # Pinned Python dependencies
+├── package.json                  # Playwright test scripts and Node dependencies
+└── .env.example                  # Local environment-variable template
 ```
 
-The numbered learning examples are grouped by topic under `Daily/`. There are two
-`agent014` examples: model selection is in `Fundamentals`, and requirement analysis
-is in `Tools_and_Agents`.
+## Requirements
 
-`Daily/RAG/rag_assistant.py` contains a basic in-memory RAG class. Pass it a
-LangChain chat model and embeddings implementation, call `add_text()` with source
-text, then call `ask()` with a question. Documents are split into chunks and the
-three most similar chunks are provided to the model as context. The vector store
-is in memory and is rebuilt when the class is created.
+- Python 3.12 (the examples and local environment are set up for Python 3.12).
+- Node.js and npm for the Playwright suite.
+- Credentials for the provider used by the example you want to run.
+- [Ollama](https://ollama.com/) for local-model examples.
+- Optional services/tools such as LangSmith, Tavily, Jira/MCP, or DeepEval may require their own credentials or setup.
 
-Run the Streamlit chat example from the project root with:
+## Set up the environment
+
+Run commands from the repository root.
+
+### Python
+
+Create a virtual environment and install the pinned dependencies:
 
 ```powershell
-streamlit run Daily\Chat_and_Memory\agent016_agent_streamlint.py
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Copy-Item .env.example .env
 ```
 
-## Prerequisites
+Edit `.env` and replace placeholders with your own credentials. Never commit `.env` or paste API keys into source files.
 
-- Python 3.12
-- An OpenAI API key, if you use `online`
-- A LangSmith API key, if you want traces in the LangSmith UI
-- [Ollama](https://ollama.com/) installed locally, if you use `offline`
+### Node.js / Playwright
 
-This laptop already has Ollama and the `qwen3:8b` model. If you set the project up on another machine, pull that model once:
+Install the JavaScript dependencies and the Chromium browser used by the configured Playwright project:
+
+```powershell
+npm install
+npx playwright install chromium
+```
+
+The Playwright configuration targets Chromium. The examples currently visit public websites, so those tests need network access.
+
+## Configure model providers
+
+The root `main.py` agent selects its provider using the first command-line argument, or `LLM_MODE` if no argument is supplied:
+
+| Mode | Provider | Model | Configuration |
+| --- | --- | --- | --- |
+| `online` (default) | Command Code OpenAI-compatible API | `deepseek/deepseek-v4-flash` by default | `COMMAND_CODE_API_KEY`, optional `COMMAND_CODE_BASE_URL` and `COMMAND_CODE_MODEL` |
+| `offline` | Ollama running locally | `qwen3:8b` | Install Ollama and pull the model |
+
+For the local model, run:
 
 ```powershell
 ollama pull qwen3:8b
 ```
 
-Ollama must be running before an offline call. Starting any `ollama` command usually starts the local server on `http://localhost:11434`.
+Ensure Ollama is running before invoking an offline example. The root agent's online model configuration is in `core/command_code_llm.py`; its online/offline selection is in `core/llm_config.py`.
 
-## Setup
+The LangGraph examples are independent and may instantiate `ChatOpenAI` directly with a model name in their source. Those examples may require `OPENAI_API_KEY` and a model available to your OpenAI-compatible endpoint. The root `COMMAND_CODE_*` settings do not automatically reconfigure every standalone example. Review the model initialization in the specific graph or script before running it.
 
-From the project folder:
+### Environment variables
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-copy .env.example .env
-```
+`.env.example` contains placeholders for:
 
-Edit `.env` and replace the placeholder key. `.env` is listed in `.gitignore` and must stay on your machine. Do not commit it.
+| Variable | Used for |
+| --- | --- |
+| `COMMAND_CODE_API_KEY` | Root agent's online Command Code model |
+| `COMMAND_CODE_BASE_URL` | Optional Command Code API endpoint override |
+| `COMMAND_CODE_MODEL` | Optional online model override |
+| `OPENAI_API_KEY` | Examples that call OpenAI directly |
+| `LANGSMITH_API_KEY` | Sending traces to LangSmith |
+| `LLM_MODE` | Default root-agent mode: `online` or `offline` |
+| `MCP_BASE_URL`, `MCP_SITE_URL`, `MCP_ISSUE_KEY` | Jira/MCP example configuration |
 
-```text
-OPENAI_API_KEY=sk-your-key-here
-LANGSMITH_API_KEY=lsv2-your-key-here
-LLM_MODE=online
-```
+Additional integrations can require other variables. For example, `main.py` also contains a Tavily search example; it imports `tavily-python` and reads `TAVILI_API_KEY`. That optional package/key is not included in `requirements.txt` or `.env.example`.
 
-`LANGSMITH_API_KEY` is optional for a local reply, and required if you want the run to show up in LangSmith. `LLM_MODE` is used only when you do not pass a mode on the command line.
+## Run the root agent
 
-## Choose online or offline
-
-Pass the mode as the first argument. That value overrides `LLM_MODE` in `.env`.
+Choose a mode explicitly:
 
 ```powershell
 .\.venv\Scripts\python.exe main.py online
 .\.venv\Scripts\python.exe main.py offline
 ```
 
-To make one mode the default, set it in `.env`:
-
-```text
-LLM_MODE=offline
-```
-
-Then run:
+Or set `LLM_MODE` in `.env` and omit the argument:
 
 ```powershell
 .\.venv\Scripts\python.exe main.py
 ```
 
-If neither the argument nor `LLM_MODE` is set, the default is `online`.
+The command-line mode takes precedence over `LLM_MODE`. Accepted values are `online` and `offline`; an unsupported value raises an error. The root agent's sample prompt is in `main.py`.
 
-Accepted values are only `online` and `offline`. Anything else raises `ValueError`.
+## Explore LangGraph
 
-The names themselves live in `core/llm_config.py`:
+Graph definitions and a graph catalog are in [`Daily/langgraph/README.md`](Daily/langgraph/README.md). The catalog describes each graph's purpose, sample inputs, LangSmith tracing, and Studio setup.
 
-```python
-ONLINE_MODEL = "openai:gpt-4o-mini"
-OFFLINE_MODEL = "ollama:qwen3:8b"
+To start the local LangGraph development server, run it from the graph directory:
+
+```powershell
+Set-Location .\Daily\langgraph
+$env:PYTHONIOENCODING = "utf-8"
+langgraph dev
 ```
 
-`create_agent()` receives a `provider:model` string. For Ollama that is `ollama:qwen3:8b`, which LangChain splits into provider `ollama` and model `qwen3:8b`.
+The CLI reads `langgraph.json`, which registers graph IDs such as `graph_simple_chat`, `graph_testcase_automation`, `graph_qa_automation`, and `graph_tool_message_state`. Open the Studio URL printed by the CLI and provide the input shape expected by the selected graph. Some workflows pause for human approval and need to be resumed with a decision.
 
-## LangSmith
+`langgraph.json` points to the repository-level `.env`. Set up that file before starting graphs that call external model APIs. Use LangSmith tracing by setting `LANGSMITH_API_KEY`; the graph README contains tracing examples.
 
-`core/langsmith_config.py` sets these only when they are not already in the environment:
+## Explore LangChain and RAG
 
-- `LANGSMITH_TRACING=true`
-- `LANGCHAIN_TRACING_V2=true`
-- `LANGSMITH_PROJECT=LLM_Forge`
+Browse the topic folders under `Daily/langchain/`. Most scripts are standalone experiments and can be run from the project root, for example:
 
-Traces for both modes are grouped under the **LLM_Forge** project when `LANGSMITH_API_KEY` is present.
-
-## Change the example question
-
-The question is the user message in `main.py`:
-
-```python
-agent.invoke({"messages": [("user", "Say hello in one sentence.")]})
+```powershell
+.\.venv\Scripts\python.exe .\Daily\langchain\Fundamentals\agent001.py
 ```
 
-Replace that string to ask something else. The printed result is the full agent state, including the human message and the model reply.
+RAG examples are under `Daily/langchain/RAG/RAG_Basics/` and cover:
 
-## Notes
+- Basic vector-store retrieval and a full assistant flow.
+- PDF and web-page loading.
+- Keyword (BM25), hybrid/ensemble retrieval, and MMR diversification.
+- Metadata annotations and cross-encoder reranking.
 
-- The first offline run loads `qwen3:8b` (about 5.2 GB) into memory, so it is slower than later runs.
-- Online runs need a working `OPENAI_API_KEY` and network access.
-- The virtual environment (`.venv`) and `.env` are local only.
+The RAG folder also contains ingestion/index-management helpers and focused tests for content hashing, source-change detection, manifest management, and source loading. Check a script's imports and configuration before execution; optional integrations may have dependencies or credentials beyond the shared requirements.
+
+## Run tests
+
+Run the Python tests for the RAG ingestion utilities:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest .\Daily\langchain\RAG
+```
+
+Run the Playwright suite:
+
+```powershell
+npm test
+```
+
+Other useful Playwright commands:
+
+```powershell
+npm run test:headed
+npm run test:ui
+npm run test:debug
+npm run report
+```
+
+The configured browser tests include a Playwright documentation smoke test and a login-flow example against a public practice site. Treat these as external-site examples, not tests of a locally hosted LLM Forge web application.
+
+## Tracing and troubleshooting
+
+- Set `LANGSMITH_API_KEY` to send supported LangChain/LangGraph runs to LangSmith. The root setup enables tracing and uses the `LLM_Forge` project name unless the environment already sets one.
+- Online model requests require valid provider credentials and network access.
+- Local model requests require Ollama to be running and the configured model to be available.
+- Human-in-the-loop graphs pause by design; provide the requested approval or feedback to continue.
+- If an individual example fails due to a missing optional integration, inspect its imports and environment-variable reads and install/configure only that integration.
+
+## Security
+
+Keep API keys, access tokens, and personal service URLs out of commits. Use `.env` for local secrets; `.env` and `.venv/` are ignored by Git. Before pushing changes, review `git status` and the staged diff to ensure no credentials, local databases, or generated artifacts are included unintentionally.
