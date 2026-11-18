@@ -7,7 +7,8 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 load_dotenv()
 
-DATA_SET_PATH = Path(__file__).resolve().parents[3] / "dataset" / "qa_knowledge.txt"
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+DATA_SET_PATH = PROJECT_ROOT / "dataset" / "qa_knowledge.txt"
 
 with DATA_SET_PATH.open("r", encoding="utf-8") as file:
     raw_text = file.read()
@@ -34,7 +35,7 @@ vstore = Chroma.from_documents(documents=chunks,
 
 retriver = vstore.as_retriever(search_kwargs={"k":2})
 
-query = "What severity is a payment failure, and what severity is a login failure for all users?"
+query = "What are the password requirements for the application?"
 
 llm = ChatOpenAI(model="gpt-6-luna")
 
@@ -46,9 +47,9 @@ prompt = ChatPromptTemplate.from_template(
 )
 documents = retriver.invoke(query)
 for document in documents:
-    print(f"\n--- DOCUMENT ---")
-    print(document.page_content)
-    print("Metadata:", document.metadata)
+    # print(f"\n--- DOCUMENT ---")
+    # print(document.page_content)
+     print("Metadata:", document.metadata)
     
 # context = []
 
