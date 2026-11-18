@@ -1,3 +1,4 @@
+- Prefers to push/commit changes in multiple separate parts (e.g., splitting changes across 2+ incremental commits) rather than bundling everything together at once. Confidence: 0.6
 - Prefers descriptive, meaningful git commit messages that summarize the change (e.g., "Add web search tool agent"), not vague or generic ones. Confidence: 0.8
 - Communicates with terse, often typo-heavy instructions ("push", "commit and push", "make thid class to work woith gpt 6 luna"), frequently while a file is open in the IDE — expects the agent to resolve the referent itself (the open file / current module), infer intent, and carry the whole task through without asking clarifying questions or flagging the typos. Confidence: 0.75
 - Annotates Python function signatures with type hints (e.g., `def generates_tests(testcases: str) -> str`) and cares that the annotation matches the actual `return` value. Confidence: 0.6
