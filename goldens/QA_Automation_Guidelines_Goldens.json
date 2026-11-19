@@ -1,0 +1,292 @@
+[
+  {
+    "id": "qa001",
+    "query": "What should the application display when a user enters an invalid password?",
+    "ideal_context": [
+      "## Login Testing\n\nIf the user enters an invalid password, the application must display \"Invalid username or password\"."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa002",
+    "query": "After how many consecutive failed login attempts should an account be locked?",
+    "ideal_context": [
+      "## Login Testing\n\nAfter 5 consecutive failed login attempts, the account must be locked for 30 minutes."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa003",
+    "query": "How long should an account remain locked after repeated failed login attempts?",
+    "ideal_context": [
+      "## Login Testing\n\nAfter 5 consecutive failed login attempts, the account must be locked for 30 minutes."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa004",
+    "query": "What credentials must the login page accept?",
+    "ideal_context": [
+      "## Login Testing\n\nThe login page must accept a valid username and password."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa005",
+    "query": "What is the minimum required password length?",
+    "ideal_context": [
+      "## Password Requirements\n\nThe password must contain at least 8 characters."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa006",
+    "query": "Which character types must be included in a valid password?",
+    "ideal_context": [
+      "## Password Requirements\n\nThe password must contain at least one uppercase letter, at least one lowercase letter, at least one number, and at least one special character."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa007",
+    "query": "Would a password containing only uppercase and lowercase letters satisfy the password requirements?",
+    "ideal_context": [
+      "## Password Requirements\n\nThe password must contain at least 8 characters. It must contain at least one uppercase letter, at least one lowercase letter, at least one number, and at least one special character."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa008",
+    "query": "Can a user who is not logged in proceed to checkout?",
+    "ideal_context": [
+      "## Checkout Testing\n\nUsers must be logged in before checkout."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa009",
+    "query": "Can a user check out when the shopping cart is empty?",
+    "ideal_context": [
+      "## Checkout Testing\n\nThe cart must contain at least one product."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa010",
+    "query": "Which payment methods does the application support?",
+    "ideal_context": [
+      "## Checkout Testing\n\nThe application supports Credit Card, Debit Card and UPI payments."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa011",
+    "query": "What should happen to the order if the payment fails?",
+    "ideal_context": [
+      "## Checkout Testing\n\nIf payment fails, the order must not be created."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa012",
+    "query": "What HTTP status code should a secured API return when the authentication token is missing?",
+    "ideal_context": [
+      "## API Testing\n\nAll secured APIs require a valid authentication token. If the authentication token is missing, the API must return HTTP 401."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa013",
+    "query": "What HTTP status code should be returned when an authenticated user does not have permission to access a resource?",
+    "ideal_context": [
+      "## API Testing\n\nIf the user does not have permission, the API must return HTTP 403."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa014",
+    "query": "What status code should a successful GET request return?",
+    "ideal_context": [
+      "## API Testing\n\nSuccessful GET requests should return HTTP 200."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa015",
+    "query": "What status code should the API return after successfully creating a resource?",
+    "ideal_context": [
+      "## API Testing\n\nSuccessful resource creation should return HTTP 201."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa016",
+    "query": "What is required to access any secured API?",
+    "ideal_context": [
+      "## API Testing\n\nAll secured APIs require a valid authentication token."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa017",
+    "query": "What is the required response-time limit for the login API?",
+    "ideal_context": [
+      "## Performance Testing\n\nThe login API should respond within 2 seconds."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa018",
+    "query": "What is the required response-time limit for the checkout API?",
+    "ideal_context": [
+      "## Performance Testing\n\nThe checkout API should respond within 3 seconds."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa019",
+    "query": "How many concurrent users must the application support?",
+    "ideal_context": [
+      "## Performance Testing\n\nThe application should support 1000 concurrent users."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa020",
+    "query": "What severity should be assigned to a payment failure?",
+    "ideal_context": [
+      "## Bug Severity Guidelines\n\nPayment failure is Critical severity."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa021",
+    "query": "What is the severity of an application crash?",
+    "ideal_context": [
+      "## Bug Severity Guidelines\n\nApplication crash is Critical severity."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa022",
+    "query": "What severity should be assigned when login fails for every user?",
+    "ideal_context": [
+      "## Bug Severity Guidelines\n\nLogin failure for all users is High severity."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa023",
+    "query": "How should a UI alignment issue be classified in terms of severity?",
+    "ideal_context": [
+      "## Bug Severity Guidelines\n\nUI alignment issues are Low severity."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa024",
+    "query": "What severity should be assigned to spelling mistakes?",
+    "ideal_context": [
+      "## Bug Severity Guidelines\n\nSpelling mistakes are Low severity."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa025",
+    "query": "Should an account be locked after 3 consecutive failed login attempts?",
+    "ideal_context": [
+      "## Login Testing\n\nAfter 5 consecutive failed login attempts, the account must be locked for 30 minutes."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa026",
+    "query": "Does a password with 7 characters meet the password requirements?",
+    "ideal_context": [
+      "## Password Requirements\n\nThe password must contain at least 8 characters. It must contain at least one uppercase letter, at least one lowercase letter, at least one number, and at least one special character."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa027",
+    "query": "Should the system create an order if the payment transaction fails?",
+    "ideal_context": [
+      "## Checkout Testing\n\nIf payment fails, the order must not be created."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa028",
+    "query": "Does HTTP 401 indicate that a user does not have permission to access a resource?",
+    "ideal_context": [
+      "## API Testing\n\nIf the authentication token is missing, the API must return HTTP 401. If the user does not have permission, the API must return HTTP 403."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  },
+  {
+    "id": "qa029",
+    "query": "Would an application that supports only 500 concurrent users meet the stated performance requirement?",
+    "ideal_context": [
+      "## Performance Testing\n\nThe application should support 1000 concurrent users."
+    ],
+    "source": [
+      "qa-automation-guidelines.md"
+    ]
+  }
+]
