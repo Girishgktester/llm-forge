@@ -1,0 +1,79 @@
+
+[
+  {
+    "input": "What is the minimum password length?",
+    "expected_output": "The minimum password length is 8 characters.",
+    "context": [
+      "Minimum password length is 8 characters."
+    ]
+  },
+  {
+    "input": "What are the password requirements?",
+    "expected_output": "Passwords must contain at least 8 characters, one uppercase letter, one number and one special character.",
+    "context": [
+      "Minimum password length is 8 characters.",
+      "Passwords must contain one uppercase letter and one number.",
+      "Passwords must contain one special character."
+    ]
+  },
+  {
+    "input": "How many annual leave days do employees receive?",
+    "expected_output": "Employees receive 20 days of annual leave.",
+    "context": [
+      "Employees receive 20 days of annual leave."
+    ]
+  },
+  {
+    "input": "What is the sick leave limit?",
+    "expected_output": "Sick leave is limited to 10 days.",
+    "context": [
+      "Sick leave is limited to 10 days."
+    ]
+  },
+  {
+    "input": "What websites can employees access?",
+    "expected_output": "Employees are allowed to access company-approved websites.",
+    "context": [
+      "Employees are allowed to access company-approved websites."
+    ]
+  },
+  {
+    "input": "Is two-factor authentication mandatory?",
+    "expected_output": "Yes. Employees must enable two-factor authentication.",
+    "context": [
+      "Employees must enable two-factor authentication."
+    ]
+  },
+  {
+    "input": "How many annual and sick leave days are provided?",
+    "expected_output": "Employees receive 20 days of annual leave and sick leave is limited to 10 days.",
+    "context": [
+      "Employees receive 20 days of annual leave.",
+      "Sick leave is limited to 10 days."
+    ]
+  },
+  {
+    "input": "Does the password policy require a special character?",
+    "expected_output": "Yes. Passwords must contain one special character.",
+    "context": [
+      "Passwords must contain one special character."
+    ]
+  },
+  {
+    "input": "What is the emergency leave allowance?",
+    "expected_output": "The knowledge base does not specify an emergency leave allowance.",
+    "context": [
+      "Employees receive 20 days of annual leave.",
+      "Sick leave is limited to 10 days."
+    ]
+  },
+  {
+    "input": "How often must employees change their passwords?",
+    "expected_output": "The knowledge base does not specify how often employees must change their passwords.",
+    "context": [
+      "Minimum password length is 8 characters.",
+      "Passwords must contain one uppercase letter and one number.",
+      "Passwords must contain one special character."
+    ]
+  }
+]

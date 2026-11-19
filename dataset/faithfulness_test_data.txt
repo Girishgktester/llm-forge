@@ -1,0 +1,14 @@
+1. Password Policy
+Minimum password length is 8 characters.
+Passwords must contain one uppercase letter and one number.
+Passwords must contain one special character.
+
+2. Leave Policy
+Employees receive 20 days of annual leave.
+Sick leave is limited to 10 days.
+
+3. Internet Policy
+Employees are allowed to access company-approved websites.
+
+4. Security Policy
+Employees must enable two-factor authentication.
