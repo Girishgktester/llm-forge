@@ -6,10 +6,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 load_dotenv()
-
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
 DATA_SET_PATH = PROJECT_ROOT / "dataset" / "qa_knowledge.txt"
-
 with DATA_SET_PATH.open("r", encoding="utf-8") as file:
     raw_text = file.read()
 
@@ -18,20 +16,15 @@ document = Document(page_content=raw_text, metadata={"source": str(DATA_SET_PATH
 splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=10)
 chunks = splitter.split_documents([document])
 
-for i, chunk in enumerate(chunks):
-    print(f"\n--- CHUNK {i} ---")
-    print(chunk.page_content)
-    print("Metadata:", chunk.metadata)
+# for i, chunk in enumerate(chunks):
+#     print(f"\n--- CHUNK {i} ---")
+#     print(chunk.page_content)
+#     print("Metadata:", chunk.metadata)
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 CHROMA_DB_PATH = str(Path(__file__).resolve().parents[2] / ".." / ".." / "chroma_db").replace("\\", "/")
-
-vstore = Chroma.from_documents(documents=chunks,
-                       embedding=embeddings,
-                       collection_name="qa_knowledge",
-                       persist_directory=CHROMA_DB_PATH,
-)
+vstore = Chroma.from_documents(documents=chunks,embedding=embeddings,collection_name="qa_knowledge",persist_directory=CHROMA_DB_PATH)
 
 retriver = vstore.as_retriever(search_kwargs={"k":2})
 
