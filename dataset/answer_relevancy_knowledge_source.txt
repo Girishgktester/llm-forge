@@ -1,0 +1,24 @@
+Playwright With TypeScript Course
+
+Course Name: Playwright With TypeScript
+Course Code: PW-TS-01
+Price: 250 USD
+Duration: 3 months
+
+Topics Covered:
+- Playwright fundamentals
+- TypeScript fundamentals
+- Locators
+- Assertions
+- Fixtures
+
+Target Audience:
+Automation testers
+
+Other Available Courses:
+
+Selenium Automation Training
+Topics: Selenium WebDriver, Java, TestNG
+
+API Testing Training
+Topics: REST API testing, Postman, API automation

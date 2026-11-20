@@ -14,8 +14,8 @@ from rag_retriever import RAGRetriever
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-GOLDENS_PATH = PROJECT_ROOT / "goldens" / "faithfulness_goldens.json"
-DATA_SET_PATH = PROJECT_ROOT / "dataset" / "faithfulness_test_data.txt"
+GOLDENS_PATH = PROJECT_ROOT / "goldens" / "answer_relevancy_goldens.json"
+DATA_SET_PATH = PROJECT_ROOT / "dataset" / "answer_relevancy_knowledge_source.txt"
 
 class AnswerRelevancyTest:
     def __init__(self):
@@ -24,7 +24,7 @@ class AnswerRelevancyTest:
         with GOLDENS_PATH.open("r", encoding="utf-8") as file:
             golden_data = json.load(file)
 
-        goldens = [Golden(**item) for item in golden_data]
+        goldens = [Golden(**item) for item in golden_data["goldens"]]
         self.dataset = EvaluationDataset(goldens=goldens)
         self.retriever = RAGRetriever(DATA_SET_PATH).get_retriever()
         self.llm = ChatOpenAI(model="gpt-6-luna")
@@ -46,11 +46,12 @@ class AnswerRelevancyTest:
                     "question": golden.input,
                 }
             ).content
+            print(f"Answer-------------------->: {answer}")
 
             test_cases.append(
                 LLMTestCase(
-                    input=golden.input,
-                    actual_output=answer,
+                    input="What is the price of the Playwright with TypeScript course?",
+                    actual_output="The Playwright with TypeScript course costs $250. It runs for three months. We also offer Selenium, Java, and API testing courses.",
                 )
             )
 

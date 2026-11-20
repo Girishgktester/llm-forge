@@ -1,0 +1,13 @@
+{
+  "dataset_name": "AnswerRelevancyMetric_Goldens",
+  "description": "Human-authored ideal answers for the evaluation questions. Use these as expected_output in a broader evaluation dataset. AnswerRelevancyMetric itself does not consume expected_output.",
+  "goldens": [
+    {
+      "id": "ar001",
+      "scenario": "Direct answer",
+      "input": "What is the price of the Playwright with TypeScript course?",
+      "expected_output": "The Playwright with TypeScript course costs $250."
+    }
+   
+  ]
+}
