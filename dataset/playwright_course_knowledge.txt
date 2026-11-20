@@ -1,0 +1,34 @@
+Playwright With TypeScript Course
+
+Course Overview
+
+The Playwright With TypeScript course teaches UI automation using
+Playwright and TypeScript.
+
+Course Details
+
+-   Course name: Playwright With TypeScript
+-   Course code: PW-TS-01
+-   Price: 250 USD
+-   Duration: 3 months
+-   Minimum username length: 5 characters
+-   Minimum password length: 8 characters
+
+Login and Account Rules
+
+-   A username must contain at least 5 characters.
+-   A password must contain at least 8 characters.
+-   Users can reset a forgotten password using the Forgot Password
+    option.
+-   Each username must be unique.
+
+Course Support
+
+-   Students can contact course support by email.
+-   Course support responds within two business days.
+-   Students can access recorded lessons after enrolling.
+
+Refund Policy
+
+-   Students can request a refund within 7 days of enrollment.
+-   Refund requests must include the course enrollment ID.

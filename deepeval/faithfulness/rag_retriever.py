@@ -1,4 +1,5 @@
 from pathlib import Path
+from uuid import uuid4
 
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
@@ -20,14 +21,10 @@ class RAGRetriever:
         ).split_documents([document])
 
         embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-        chroma_db_path = str(
-            Path(__file__).resolve().parents[2] / ".." / ".." / "chroma_db"
-        ).replace("\\", "/")
         self.vector_store = Chroma.from_documents(
             documents=chunks,
             embedding=embeddings,
-            collection_name="qa_knowledge",
-            persist_directory=chroma_db_path,
+            collection_name=f"qa_{uuid4().hex}",
         )
 
     def get_retriever(self):

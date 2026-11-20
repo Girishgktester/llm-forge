@@ -1,0 +1,43 @@
+[
+  {
+    "id": "cr001",
+    "input": "What is the minimum username length?",
+    "expected_output": "The minimum username length is 5 characters.",
+    "ideal_context": [
+      "A username must contain at least 5 characters."
+    ]
+  },
+  {
+    "id": "cr002",
+    "input": "What is the minimum password length?",
+    "expected_output": "The minimum password length is 8 characters.",
+    "ideal_context": [
+      "A password must contain at least 8 characters."
+    ]
+  },
+  {
+    "id": "cr003",
+    "input": "How much does the Playwright With TypeScript course cost and how long is it?",
+    "expected_output": "The course costs 250 USD and runs for 3 months.",
+    "ideal_context": [
+      "Price: 250 USD",
+      "Duration: 3 months"
+    ]
+  },
+  {
+    "id": "cr004",
+    "input": "How can users reset a forgotten password?",
+    "expected_output": "Users can reset a forgotten password using the Forgot Password option.",
+    "ideal_context": [
+      "Users can reset a forgotten password using the Forgot Password option."
+    ]
+  },
+  {
+    "id": "cr005",
+    "input": "What is the refund period?",
+    "expected_output": "Students can request a refund within 7 days of enrollment.",
+    "ideal_context": [
+      "Students can request a refund within 7 days of enrollment."
+    ]
+  }
+]
