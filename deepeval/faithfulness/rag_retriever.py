@@ -29,3 +29,6 @@ class RAGRetriever:
 
     def get_retriever(self):
         return self.vector_store.as_retriever(search_kwargs={"k": 3})
+
+    def get_vector_store(self):
+        return self.vector_store

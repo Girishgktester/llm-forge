@@ -51,7 +51,7 @@ class AnswerRelevancyTest:
             test_cases.append(
                 LLMTestCase(
                     input="What is the price of the Playwright with TypeScript course?",
-                    actual_output="The Playwright with TypeScript course costs $250. It runs for three months. We also offer Selenium, Java, and API testing courses.",
+                    actual_output=answer,
                 )
             )
 
