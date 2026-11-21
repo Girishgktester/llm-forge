@@ -1,25 +1,25 @@
 import json
+import sys
 from pathlib import Path
 
 from deepeval import evaluate
 from deepeval.dataset import EvaluationDataset, Golden
 from deepeval.evaluate import DisplayConfig
-from deepeval.metrics import ContextualRelevancyMetric
+from deepeval.metrics import HallucinationMetric
 from deepeval.test_case import LLMTestCase
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-
-from rag_retriever import RAGRetriever
-
 load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-GOLDENS_PATH = PROJECT_ROOT / "goldens" / "contextual_relevancy_goldens.json"
-DATA_SET_PATH = PROJECT_ROOT / "dataset" / "playwright_course_knowledge.txt"
+sys.path.insert(0, str(PROJECT_ROOT))
+from rag_support.rag_retriever import RAGRetriever
+GOLDENS_PATH = PROJECT_ROOT / "goldens" / "hallucination_goldens.json"
+DATA_SET_PATH = PROJECT_ROOT / "dataset" / "hallucination_goldens.txt"
 
 print("=" * 80)
-print("Contextual Relevancy debug run")
+print("Hallucination metric debug run")
 print(f"Golden file: {GOLDENS_PATH}")
 print(f"Knowledge file: {DATA_SET_PATH}")
 
@@ -49,6 +49,8 @@ for case_number, golden in enumerate(dataset.goldens, start=1):
     documents = retriever.invoke(golden.input)
     retrieved_context = [document.page_content for document in documents]
     print(f"Retrieved {len(documents)} document(s):")
+    print(f"retrieved_context {retrieved_context} ")
+
     for document_number, document in enumerate(documents, start=1):
         print(f"\n  Document {document_number}")
         print(f"  Source: {document.metadata.get('source', 'unknown')}")
@@ -66,17 +68,17 @@ for case_number, golden in enumerate(dataset.goldens, start=1):
         LLMTestCase(
             input=golden.input,
             actual_output=answer,
-            retrieval_context=retrieved_context,
+            context=retrieved_context,
         )
     )
 
-metric = ContextualRelevancyMetric(
+metric = HallucinationMetric(
     threshold=0.8,
     model="gpt-6-luna",
     include_reason=True,
 )
-print("\nRunning Contextual Relevancy evaluation...")
-print("The metric evaluates each question against its retrieved context.")
+print("\nRunning Hallucination evaluation...")
+print("The metric checks whether the answer contradicts the retrieved context.")
 evaluate(
     test_cases=test_cases,
     metrics=[metric],
@@ -87,4 +89,4 @@ evaluate(
         file_output_dir="./deepeval_results",
     ),
 )
-print("\nContextual Relevancy evaluation finished.")
+print("\nHallucination evaluation finished.")

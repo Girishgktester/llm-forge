@@ -8,12 +8,14 @@ from langchain_core.prompts import ChatPromptTemplate
 from deepeval.evaluate import DisplayConfig
 from deepeval.dataset import EvaluationDataset, Golden
 from langchain_openai import ChatOpenAI
-from rag_retriever import RAGRetriever
+import sys
 import json
 
 load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+from rag_support.rag_retriever import RAGRetriever
 GOLDENS_PATH = PROJECT_ROOT / "goldens" / "faithfulness_goldens.json"
 DATA_SET_PATH = PROJECT_ROOT / "dataset" / "faithfulness_test_data.txt"
 

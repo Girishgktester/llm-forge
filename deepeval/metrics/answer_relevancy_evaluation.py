@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 
 from deepeval import evaluate
@@ -10,10 +11,9 @@ from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
-from rag_retriever import RAGRetriever
-
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+from rag_support.rag_retriever import RAGRetriever
 GOLDENS_PATH = PROJECT_ROOT / "goldens" / "answer_relevancy_goldens.json"
 DATA_SET_PATH = PROJECT_ROOT / "dataset" / "answer_relevancy_knowledge_source.txt"
 

@@ -1,38 +1,37 @@
 import json
 import sys
 from pathlib import Path
+
 from deepeval import evaluate
 from deepeval.dataset import EvaluationDataset, Golden
 from deepeval.evaluate import DisplayConfig
-from deepeval.metrics import ContextualRecallMetric
+from deepeval.metrics import ContextualRelevancyMetric
 from deepeval.test_case import LLMTestCase
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-from rag_retriever import RAGRetriever
-
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-if hasattr(sys.stderr, "reconfigure"):
-    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-GOLDENS_PATH = PROJECT_ROOT / "goldens" / "contextual_recall_goldens.json"
-DATA_SET_PATH = PROJECT_ROOT / "dataset" / "course_know.txt"
+sys.path.insert(0, str(PROJECT_ROOT))
+from rag_support.rag_retriever import RAGRetriever
+GOLDENS_PATH = PROJECT_ROOT / "goldens" / "contextual_relevancy_goldens.json"
+DATA_SET_PATH = PROJECT_ROOT / "dataset" / "playwright_course_knowledge.txt"
 
+print("=" * 80)
+print("Contextual Relevancy debug run")
+print(f"Golden file: {GOLDENS_PATH}")
+print(f"Knowledge file: {DATA_SET_PATH}")
 
 with GOLDENS_PATH.open("r", encoding="utf-8") as file:
     golden_data = json.load(file)
 
 goldens = [Golden(**item) for item in golden_data]
 dataset = EvaluationDataset(goldens=goldens)
+print(f"Loaded {len(dataset.goldens)} Golden test cases.")
 
-
-rag_retriever = RAGRetriever(DATA_SET_PATH)
-retriever = rag_retriever.get_retriever()
-vector_store = rag_retriever.get_vector_store()
+retriever = RAGRetriever(DATA_SET_PATH).get_retriever()
 print("RAG retriever is ready.")
 
 llm = ChatOpenAI(model="gpt-6-luna")
@@ -48,15 +47,11 @@ for case_number, golden in enumerate(dataset.goldens, start=1):
     print(f"Test case {case_number}/{len(dataset.goldens)}")
     print(f"Question: {golden.input}")
 
-    ranked_documents = vector_store.similarity_search_with_score(
-        golden.input,
-        k=5,
-    )
-    retrieved_context = [document.page_content for document, _score in ranked_documents]
-    print(f"Retrieved {len(ranked_documents)} document(s):")
-    for document_number, (document, score) in enumerate(ranked_documents, start=1):
-        print(f"\n  Rank {document_number}")
-        print(f"  Retrieval score: {score:.6f}")
+    documents = retriever.invoke(golden.input)
+    retrieved_context = [document.page_content for document in documents]
+    print(f"Retrieved {len(documents)} document(s):")
+    for document_number, document in enumerate(documents, start=1):
+        print(f"\n  Document {document_number}")
         print(f"  Source: {document.metadata.get('source', 'unknown')}")
         print(f"  Content:\n{document.page_content}")
 
@@ -72,12 +67,11 @@ for case_number, golden in enumerate(dataset.goldens, start=1):
         LLMTestCase(
             input=golden.input,
             actual_output=answer,
-            expected_output=golden.expected_output,
             retrieval_context=retrieved_context,
         )
     )
 
-metric = ContextualRecallMetric(
+metric = ContextualRelevancyMetric(
     threshold=0.8,
     model="gpt-6-luna",
     include_reason=True,

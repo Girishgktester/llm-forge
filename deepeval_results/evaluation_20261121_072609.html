@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #6a00ff; text-decoration-color: #6a00ff; font-weight: bold}
+.r2 {color: #19e3a0; text-decoration-color: #19e3a0}
+.r3 {color: #19e3a0; text-decoration-color: #19e3a0; font-weight: bold}
+.r5 {color: #11a8cd; text-decoration-color: #11a8cd; font-weight: bold}
+.r6 {font-style: italic}
+.r7 {color: #0dbc79; text-decoration-color: #0dbc79; font-weight: bold}
+.r8 {color: #6a00ff; text-decoration-color: #6a00ff}
+.r9 {font-weight: bold; font-style: italic}
+body {
+    color: #ffffff;
+    background-color: #000000;
+}
+</style>
+<style>pre { line-height: 1.1 !important; }</style></head>
+<body>
+    <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><code style="font-family:inherit">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ <span class="r1">🚀 DeepEval Evaluation Results</span>                                                                                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_0</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:          </span>  How long does the Playwright with TypeScript course last?                                                                 <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:  </span>  The Playwright with TypeScript course lasts 3 months.                                                                     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric        </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                        </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Hallucination │ 1.00  │ 0.80      │ The score is 1.00 because the actual output agrees with the context about the course’s          <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │               │       │           │ three-month duration and makes no claims that contradict the context.                           <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_1</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:          </span>  When are classes conducted?                                                                                               <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:  </span>  Classes are conducted online Monday through Friday. There are no weekend classes.                                         <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric        </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                        </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Hallucination │ 1.00  │ 0.80      │ The score is 1.00 because the actual output agrees with the context about weekday online        <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │               │       │           │ classes and makes no contradictory claims; the unaddressed details are not contradictions.      <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r8">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r8">│</span> <span class="r9">Aggregate Metrics</span><span class="r6">                                                                                                                                 </span> <span class="r8">│</span>
+<span class="r8">│</span> <span class="r6">                                                                                                                                                  </span> <span class="r8">│</span>
+<span class="r8">│</span> <span class="r1"> Metric                         </span>┃<span class="r1"> Average Score                  </span>┃<span class="r1"> Pass Rate                                                       </span>┃<span class="r1"> Total        </span> <span class="r8">│</span>
+<span class="r8">│</span> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━ <span class="r8">│</span>
+<span class="r8">│</span>  Hallucination                  │ 1.00                           │ 100.00% | passed=2 | failed=0                                   │ 2             <span class="r8">│</span>
+<span class="r8">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+</code></pre>
+</body>
+</html>
