@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #6a00ff; text-decoration-color: #6a00ff; font-weight: bold}
+.r2 {color: #19e3a0; text-decoration-color: #19e3a0}
+.r3 {color: #19e3a0; text-decoration-color: #19e3a0; font-weight: bold}
+.r5 {color: #11a8cd; text-decoration-color: #11a8cd; font-weight: bold}
+.r6 {font-style: italic}
+.r7 {color: #0dbc79; text-decoration-color: #0dbc79; font-weight: bold}
+.r8 {color: #6a00ff; text-decoration-color: #6a00ff}
+.r9 {font-weight: bold; font-style: italic}
+body {
+    color: #ffffff;
+    background-color: #000000;
+}
+</style>
+<style>pre { line-height: 1.1 !important; }</style></head>
+<body>
+    <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><code style="font-family:inherit">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ <span class="r1">🚀 DeepEval Evaluation Results</span>                                                                                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_0</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  How long is the Playwright with TypeScript course and how much does it cost?                                            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  The course lasts 3 months. The cost isn’t provided in the context.                                                      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  The course lasts 3 months and costs $250.                                                                               <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the relevant first node in the retrieval contexts states the   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ course “lasts 3 months,” while the irrelevant second and third nodes should rank         <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ lower: they cover “locators, assertions, and auto-waiting” and “API testing with         <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ Playwright,” respectively, without answering the duration or cost. Great ranking.        <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_1</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  What prerequisites are required to join the course?                                                                     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  You should have basic knowledge of JavaScript and HTML/CSS, plus a laptop with a stable internet connection.            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  Students should know basic JavaScript, HTML, and CSS. They also need a laptop with a stable internet connection.        <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the first node in the retrieval contexts directly provides     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ the prerequisites, while the irrelevant second and third nodes discuss course fees and   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ materials, and the curriculum, respectively. The relevant node is ranked first, so the   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ ranking is excellent.                                                                    <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_2</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  What topics are covered in the course curriculum?                                                                       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  The course covers Playwright installation and project setup, locators, assertions, auto-waiting, handling alerts,       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">                    </span>  frames, and multiple tabs, API testing with Playwright, and Page Object Model design.                                   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  The curriculum covers Playwright installation and setup, locators, assertions, auto-waiting, alerts, frames,            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">                    </span>  multiple tabs, API testing, Page Object Model, test execution, debugging, trace viewer, and CI integration using        <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">                    </span>  GitHub Actions.                                                                                                         <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the first and second nodes in the retrieval contexts are       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ relevant and ranked above the irrelevant third node. The first node lists topics such    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ as “handling alerts, frames, and multiple tabs,” while the second covers “locators,      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ assertions, and auto-waiting.” The third node is correctly ranked lower because it       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ discusses course fees, recorded sessions, and practice assignments rather than           <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ curriculum topics. Great ranking!                                                        <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_3</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  What practical assignments and projects are included?                                                                   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  Students receive weekly hands-on assignments and complete a mini e-commerce automation project. They’re also            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">                    </span>  expected to complete the final project independently.                                                                   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  Students receive weekly hands-on assignments, complete a mini e-commerce automation project, and are expected to        <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">                    </span>  complete the final project independently.                                                                               <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the relevant nodes in retrieval contexts are ranked first      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ and second: the first states that students receive weekly hands-on assignments,          <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ complete a mini e-commerce automation project, and finish an independent final           <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ project, while the second mentions submitting the final project. The irrelevant third    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ node is ranked lower because it describes topics like installation, locators, and        <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ assertions without identifying assignments or projects.                                  <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_4</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  How do students get support and receive the completion certificate?                                                     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  Students can attend doubt-clearing sessions twice a week for support. They receive a course completion certificate      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">                    </span>  after submitting the final project.                                                                                     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  Doubt-clearing sessions are held twice a week. Students receive a course completion certificate after submitting the    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">                    </span>  final project.                                                                                                          <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the relevant nodes in retrieval contexts are ranked first      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ and second: the first explains support through “Doubt-clearing sessions are held twice   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ a week” and the certificate after “submitting the final project,” while the second       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ confirms the project requirement. The irrelevant third node is ranked lower; it covers   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ “test execution, debugging, and trace viewer” but does not address support or            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ certification.                                                                           <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r8">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r8">│</span> <span class="r9">Aggregate Metrics</span><span class="r6">                                                                                                                                 </span> <span class="r8">│</span>
+<span class="r8">│</span> <span class="r6">                                                                                                                                                  </span> <span class="r8">│</span>
+<span class="r8">│</span> <span class="r1"> Metric                                   </span>┃<span class="r1"> Average Score               </span>┃<span class="r1"> Pass Rate                                                 </span>┃<span class="r1"> Total       </span> <span class="r8">│</span>
+<span class="r8">│</span> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━ <span class="r8">│</span>
+<span class="r8">│</span>  Contextual Precision                     │ 1.00                        │ 100.00% | passed=5 | failed=0                             │ 5            <span class="r8">│</span>
+<span class="r8">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+</code></pre>
+</body>
+</html>

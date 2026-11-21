@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #6a00ff; text-decoration-color: #6a00ff; font-weight: bold}
+.r2 {color: #cd3131; text-decoration-color: #cd3131}
+.r3 {color: #cd3131; text-decoration-color: #cd3131; font-weight: bold}
+.r5 {color: #11a8cd; text-decoration-color: #11a8cd; font-weight: bold}
+.r6 {font-style: italic}
+.r7 {color: #6a00ff; text-decoration-color: #6a00ff}
+.r8 {font-weight: bold; font-style: italic}
+body {
+    color: #ffffff;
+    background-color: #000000;
+}
+</style>
+<style>pre { line-height: 1.1 !important; }</style></head>
+<body>
+    <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><code style="font-family:inherit">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ <span class="r1">🚀 DeepEval Evaluation Results</span>                                                                                                                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+<span class="r2">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                                                                              <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">❌ test_case_0</span>                                                                                                                                                                                              <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  How long is the Playwright with TypeScript course and how much does it cost?                                                                                                      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  The course lasts 3 months. The cost isn’t provided in the context.                                                                                                                <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  The course lasts 3 months and costs $250.                                                                                                                                         <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                                                                               </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status  </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score  </span>┃<span class="r1"> Threshold   </span>┃<span class="r1"> Reason                                                                                                                                       </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r3">FAIL</span>   │ Contextual Recall    │ 0.00   │ 0.80        │ The score is 0.00 because sentence 1’s duration is supported by node 1 in retrieval context, but no node supports the $250 cost.               <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                                                                              <span class="r2">│</span>
+<span class="r2">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r7">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r7">│</span> <span class="r8">Aggregate Metrics</span><span class="r6">                                                                                                                                                                                           </span> <span class="r7">│</span>
+<span class="r7">│</span> <span class="r6">                                                                                                                                                                                                            </span> <span class="r7">│</span>
+<span class="r7">│</span> <span class="r1"> Metric                                                </span>┃<span class="r1"> Average Score                             </span>┃<span class="r1"> Pass Rate                                                                         </span>┃<span class="r1"> Total              </span> <span class="r7">│</span>
+<span class="r7">│</span> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━ <span class="r7">│</span>
+<span class="r7">│</span>  Contextual Recall                                     │ 0.00                                      │ 0.00% | passed=0 | failed=1                                                       │ 1                   <span class="r7">│</span>
+<span class="r7">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+</code></pre>
+</body>
+</html>

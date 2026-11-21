@@ -1,0 +1,6 @@
+[
+  {
+    "input": "How long is the Playwright with TypeScript course and how much does it cost?",
+    "expected_output": "The course lasts 3 months and costs $250."
+  }
+]

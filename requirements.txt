@@ -68,3 +68,4 @@ yarl==1.25.1
 zstandard==0.25.0
 pytest==8.4.2
 deepeval==4.2.8
+portalocker[win32]==4.4.0

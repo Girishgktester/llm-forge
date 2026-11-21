@@ -1,0 +1,34 @@
+PLAYWRIGHT COURSE KNOWLEDGE BASE
+
+1. Course Overview
+The Playwright with TypeScript course lasts 3 months.
+The course is designed for beginners and working QA engineers.
+Classes are conducted online on weekdays.
+
+2. Course Pricing
+The total course fee is $250.
+The fee includes access to recorded sessions and practice assignments.
+There are no additional charges for the course materials.
+
+3. Course Requirements
+Students should have basic knowledge of JavaScript.
+Students should know basic HTML and CSS.
+A laptop with a stable internet connection is required.
+
+4. Course Curriculum
+The course covers Playwright installation and project setup.
+Students learn locators, assertions, and auto-waiting.
+The curriculum includes handling alerts, frames, and multiple tabs.
+Students learn API testing with Playwright.
+The course also covers Page Object Model design.
+Students learn test execution, debugging, and trace viewer.
+The final module covers CI integration using GitHub Actions.
+
+5. Assignments and Practice
+Students receive weekly hands-on assignments.
+A mini e-commerce automation project is included.
+Students are expected to complete the final project independently.
+
+6. Support and Completion
+Doubt-clearing sessions are held twice a week.
+Students receive a course completion certificate after submitting the final project.
