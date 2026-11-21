@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #6a00ff; text-decoration-color: #6a00ff; font-weight: bold}
+.r2 {color: #19e3a0; text-decoration-color: #19e3a0}
+.r3 {color: #19e3a0; text-decoration-color: #19e3a0; font-weight: bold}
+.r5 {color: #11a8cd; text-decoration-color: #11a8cd; font-weight: bold}
+.r6 {font-style: italic}
+.r7 {color: #0dbc79; text-decoration-color: #0dbc79; font-weight: bold}
+.r8 {color: #6a00ff; text-decoration-color: #6a00ff}
+.r9 {font-weight: bold; font-style: italic}
+body {
+    color: #ffffff;
+    background-color: #000000;
+}
+</style>
+<style>pre { line-height: 1.1 !important; }</style></head>
+<body>
+    <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><code style="font-family:inherit">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ <span class="r1">🚀 DeepEval Evaluation Results</span>                                                                                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_0</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  What is the minimum username length?                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  The minimum username length is 5 characters.                                                                            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  The minimum username length is 5 characters.                                                                            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 0.83  │ 0.80      │ The score is 0.83 because the first node in the retrieval contexts directly answers      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ the question: “A username must contain at least 5 characters.” The second node is        <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ irrelevant, since it “only says usernames must be unique” and appears before the         <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ relevant third node, which explicitly gives “Minimum username length: 5 characters.”     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ The score is not higher because that irrelevant node is ranked ahead of a relevant       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ one.                                                                                     <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_1</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  What is the minimum password length?                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  The minimum password length is 8 characters.                                                                            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  The minimum password length is 8 characters.                                                                            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the first and second nodes in the retrieval contexts           <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ directly answer that the minimum password length is 8 characters. The third node is      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ irrelevant and ranked last; “Login and Account Rules” is only a heading and does not     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ provide the minimum length.                                                              <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_2</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  How much does the Playwright With TypeScript course cost and how long is it?                                            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  The course costs 250 USD and lasts 3 months.                                                                            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  The course costs 250 USD and runs for 3 months.                                                                         <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the first node in the retrieval contexts directly provides     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ the course cost (250 USD) and duration (3 months), while the irrelevant second and       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ third nodes are ranked lower and do not provide those details. Great ranking.            <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_3</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  How can users reset a forgotten password?                                                                               <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  Users can reset a forgotten password using the Forgot Password option.                                                  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  Users can reset a forgotten password using the Forgot Password option.                                                  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the first node in the retrieval contexts directly explains     <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ that users can reset a forgotten password using the Forgot Password option. The          <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ irrelevant second and third nodes are ranked lower: the second is only a heading,        <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ “Login and Account Rules,” and the third discusses course support, lessons, and          <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ refunds rather than password resets. All relevant information is ranked above            <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ irrelevant content.                                                                      <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r2">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r3">✅ test_case_4</span>                                                                                                                                    <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">├── </span><span class="r5">  Input:            </span>  What is the refund period?                                                                                              <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Actual Output:    </span>  Students can request a refund within 7 days of enrollment.                                                              <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">│   </span><span class="r5">  Expected Output:  </span>  Students can request a refund within 7 days of enrollment.                                                              <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">└── </span><span class="r6">Metrics                                                                                                                                     </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span><span class="r1"> Status </span>┃<span class="r1"> Metric               </span>┃<span class="r1"> Score </span>┃<span class="r1"> Threshold </span>┃<span class="r1"> Reason                                                                                 </span>  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>  <span class="r7">PASS</span>  │ Contextual Precision │ 1.00  │ 0.80      │ The score is 1.00 because the first node in the retrieval contexts directly answers      <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ the question with “Students can request a refund within 7 days of enrollment.” The       <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ irrelevant second and third nodes are ranked lower: the second gives “no refund-period   <span class="r2">│</span>
+<span class="r2">│</span>  <span class="r4">    </span>        │                      │       │           │ information,” and the third is about “Login and Account Rules.”                          <span class="r2">│</span>
+<span class="r2">│</span>                                                                                                                                                    <span class="r2">│</span>
+<span class="r2">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="r8">╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="r8">│</span> <span class="r9">Aggregate Metrics</span><span class="r6">                                                                                                                                 </span> <span class="r8">│</span>
+<span class="r8">│</span> <span class="r6">                                                                                                                                                  </span> <span class="r8">│</span>
+<span class="r8">│</span> <span class="r1"> Metric                                   </span>┃<span class="r1"> Average Score               </span>┃<span class="r1"> Pass Rate                                                 </span>┃<span class="r1"> Total       </span> <span class="r8">│</span>
+<span class="r8">│</span> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━ <span class="r8">│</span>
+<span class="r8">│</span>  Contextual Precision                     │ 0.97                        │ 100.00% | passed=5 | failed=0                             │ 5            <span class="r8">│</span>
+<span class="r8">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+</code></pre>
+</body>
+</html>
