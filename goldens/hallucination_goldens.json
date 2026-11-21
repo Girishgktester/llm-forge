@@ -1,0 +1,19 @@
+[
+  {
+    "input": "How long does the Playwright with TypeScript course last?",
+    "expected_output": "The course lasts 3 months.",
+    "context": [
+      "The Playwright with TypeScript course lasts 3 months."
+    ],
+    "test_note": "Grounded fact. Use an answer that says 3 months."
+  },
+  {
+    "input": "When are classes conducted?",
+    "expected_output": "Classes are conducted online from Monday to Friday.",
+    "context": [
+      "Classes are conducted online from Monday to Friday.",
+      "There are no weekend classes."
+    ],
+    "test_note": "Grounded fact. Do not claim weekend classes."
+  }
+]

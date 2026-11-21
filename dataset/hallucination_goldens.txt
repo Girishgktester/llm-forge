@@ -1,0 +1,23 @@
+PLAYWRIGHT WITH TYPESCRIPT COURSE
+
+1. Course duration
+The Playwright with TypeScript course lasts 3 months.
+
+2. Class schedule
+Classes are conducted online from Monday to Friday.
+There are no weekend classes.
+
+3. Intended learners
+The course is designed for beginners and working QA engineers.
+
+4. Course topics
+The course covers Playwright basics, TypeScript fundamentals, locators,
+web interactions, assertions, test fixtures, Page Object Model,
+API testing, and CI execution.
+
+5. Assessment
+Students complete practical automation assignments during the course.
+The course does not guarantee a job placement.
+
+6. Prerequisites
+Basic programming knowledge is helpful but is not mandatory.
