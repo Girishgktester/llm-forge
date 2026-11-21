@@ -10,11 +10,26 @@ from deepeval.dataset import EvaluationDataset, Golden
 from langchain_openai import ChatOpenAI
 import sys
 import json
+import os
+import deepeval
 
 load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
+
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+load_dotenv(PROJECT_ROOT / ".env")
+
+deep_eval_api_key = os.getenv("CONFIDENT_API_KEY")
+if deep_eval_api_key:
+    deepeval.login(deep_eval_api_key)
+else:
+    raise ValueError("Set CONFIDENT_API_KEY in the project .env file.")
+
+
 from rag_support.rag_retriever import RAGRetriever
 GOLDENS_PATH = PROJECT_ROOT / "goldens" / "faithfulness_goldens.json"
 DATA_SET_PATH = PROJECT_ROOT / "dataset" / "faithfulness_test_data.txt"

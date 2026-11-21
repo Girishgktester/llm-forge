@@ -1,7 +1,8 @@
 import json
+import os
 import sys
 from pathlib import Path
-
+import deepeval
 from deepeval import evaluate
 from deepeval.dataset import EvaluationDataset, Golden
 from deepeval.evaluate import DisplayConfig
@@ -11,9 +12,15 @@ from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
-load_dotenv()
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+load_dotenv(PROJECT_ROOT / ".env")
+
+deep_eval_api_key = os.getenv("CONFIDENT_API_KEY")
+if deep_eval_api_key:
+    deepeval.login(deep_eval_api_key)
+else:
+    raise ValueError("Set CONFIDENT_API_KEY in the project .env file.")
+
 sys.path.insert(0, str(PROJECT_ROOT))
 from rag_support.rag_retriever import RAGRetriever
 GOLDENS_PATH = PROJECT_ROOT / "goldens" / "contextual_relevancy_goldens.json"
