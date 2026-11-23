@@ -105,7 +105,7 @@ The LangGraph examples are independent and may instantiate `ChatOpenAI` directly
 | `LLM_MODE` | Default root-agent mode: `online` or `offline` |
 | `MCP_BASE_URL`, `MCP_SITE_URL`, `MCP_ISSUE_KEY` | Jira/MCP example configuration |
 
-Additional integrations can require other variables. For example, `main.py` also contains a Tavily search example; it imports `tavily-python` and reads `TAVILI_API_KEY`. That optional package/key is not included in `requirements.txt` or `.env.example`.
+Tavily search examples use `tavily-python` and read `TAVILI_API_KEY`; set this key in `.env` before running them.
 
 ## Run the root agent
 
