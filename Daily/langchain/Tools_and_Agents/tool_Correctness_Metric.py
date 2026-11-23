@@ -11,6 +11,11 @@ from deepeval import evaluate
 from deepeval.test_case import LLMTestCase
 from deepeval.metrics import ToolCorrectnessMetric
 
+api_key = os.getenv("TAVILI_API_KEY")
+if not api_key:
+    raise ValueError("Set TAVILI_API_KEY in .env to use Tavily search.")
+tavily_client = TavilyClient(api_key=api_key)
+
 testData = [
     {
         "input": "who is the president of the united states?",
@@ -29,24 +34,15 @@ testData = [
     }
 ]
 
-
 @tool
 def add(a: float, b: float) -> float:
     """Add two numbers."""
     return a + b
 
-
 @tool
 def subtract(a: float, b: float) -> float:
     """Subtract the second number from the first."""
     return a - b
-
-
-api_key = os.getenv("TAVILI_API_KEY")
-if not api_key:
-    raise ValueError("Set TAVILI_API_KEY in .env to use Tavily search.")
-tavily_client = TavilyClient(api_key=api_key)
-
 
 @tool
 def tavily_search(query: str) -> str:
@@ -60,7 +56,6 @@ def tavily_search(query: str) -> str:
         for result in results
     )
 
-
 tools = [add, subtract, tavily_search]
 
 agent = create_agent(
@@ -72,7 +67,6 @@ agent = create_agent(
     tools=tools,
 )
 
-
 def query_agent(question: str):
     response = agent.invoke({"messages": [{"role": "user", "content": question}]})
     tool_calls = [
@@ -82,8 +76,9 @@ def query_agent(question: str):
     ]
     return response, tool_calls
 
-
 response, tool_calls = query_agent(testData[1]["input"])
+
+print(type(tool_calls))
 
 test_case = LLMTestCase(
     input=testData[1]["input"],
@@ -95,5 +90,5 @@ test_case = LLMTestCase(
 
 evaluation_result = evaluate(
     test_cases=[test_case],
-    metrics=[ToolCorrectnessMetric(model="gpt-6-luna")],
+    metrics=[ToolCorrectnessMetric(model="gpt-6-luna")]
 )
