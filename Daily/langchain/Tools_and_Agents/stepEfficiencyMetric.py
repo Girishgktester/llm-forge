@@ -41,7 +41,8 @@ tools = [add, subtract, tavily_search]
 agent = create_agent(
     model="gpt-6-luna",
     system_prompt=(
-        "For arithmetic questions, use the add or subtract tool. "
+        "Answer simple arithmetic questions directly. "
+        "Use add or subtract only for calculations that need a tool. "
         "For current information, use tavily_search."
     ),
     tools=tools,
