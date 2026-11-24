@@ -1,0 +1,25 @@
+# User Story: Successful Login with Valid Credentials
+
+**Issue Type:** Story
+
+## User Story
+
+As a registered user,  
+I want to log in using my valid email and password,  
+So that I can access the application.
+
+## Test Data
+
+- URL: https://freelance-learn-automation.vercel.app/login
+- Email: admin@email.com
+- Password: <REDACTED>
+
+## Acceptance Criteria
+
+1. User should be able to open the login page.
+2. User should be able to enter a valid email.
+3. User should be able to enter a valid password.
+4. Password should be masked.
+5. User should be able to click the Sign in button.
+6. User should log in successfully.
+7. User should be redirected to the home page.
