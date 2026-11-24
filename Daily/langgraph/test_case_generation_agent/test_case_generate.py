@@ -12,6 +12,7 @@ from langchain_openai import ChatOpenAI
 from playwright.sync_api import sync_playwright
 from deepeval.test_case import LLMTestCase
 from deepeval.metrics import AnswerRelevancyMetric , FaithfulnessMetric
+from deepeval import evaluate
 
 load_dotenv()
 
@@ -103,6 +104,11 @@ def validate_testcases(state: TestState):
     print("Relevancy:", faithfulness.score)
     print("Faithfulness:", faithfulness.score)
     
+    evaluation_result = evaluate(
+    test_cases=[testcase],
+    metrics=[answerRelevancyMetric(model="gpt-6-luna")]
+)
+
     answerRelevancyMetric.measure(testcase)
     return {
             "relevancy_score": answerRelevancyMetric.score,
