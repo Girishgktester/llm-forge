@@ -71,3 +71,4 @@ deepeval==4.2.8
 ddgs
 tavily-python==0.8.4
 portalocker[win32]==4.4.0
+playwright==1.65.2
