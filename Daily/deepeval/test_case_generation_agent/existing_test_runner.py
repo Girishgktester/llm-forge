@@ -41,6 +41,8 @@ class TestState(TypedDict, total=False):
     automation_attempts: int
     feedback: str
     decision: str
+    automation_decision: str
+    automation_feedback: str
 
     relevancy_score: float | None
     relevancy_reason: str | None
@@ -120,11 +122,15 @@ def validate_testcases(state: TestState):
     pass
 
 def human_review(state: TestState):
-    userfeedback = interrupt("Enter approve/edit/reject and feedback")
+    userfeedback = interrupt({
+        "type": "manual_testcase_review",
+        "message": "Review generated manual test cases",
+        "test_cases": state["test_cases"]
+    })
+
     return {
         "decision": userfeedback["decision"],
-        "feedback": userfeedback.get("feedback", ""),
-        "approval": userfeedback["decision"] == "approve",
+        "feedback": userfeedback.get("feedback", "")
     }
 
 def route(state: TestState):
@@ -136,6 +142,8 @@ def route(state: TestState):
         if state.get("manual_attempts", 0) >= 3:
             return "rejected"
         return "edit"
+    
+
 
 
 def save_testcases(state: TestState):
@@ -166,7 +174,7 @@ def clean_code(text: str):
     return text.strip()
 
 
-def generate_autopmated_tests(state: TestState):
+def generate_automated_tests(state: TestState):
     with open(state["automated_output_file"], "r", encoding="utf-8") as file:
         test_code = file.read()
 
@@ -174,6 +182,23 @@ def generate_autopmated_tests(state: TestState):
     return {
         "test_code": test_code,
         "automation_attempts": 1,
+    }
+
+
+def generate_autopmated_tests(state: TestState):
+    feedback = state.get("automation_feedback", "").strip()
+    if feedback:
+        print("Regenerating automation using human feedback")
+        with open(state["automated_output_file"], "r", encoding="utf-8") as file:
+                test_code = file.read()
+    else:
+        print("Generating automation for the first time")
+        with open(state["automated_output_file"], "r", encoding="utf-8") as file:
+               test_code = file.read()
+    return {
+        "test_code": test_code,
+        "automation_attempts": state.get("automation_attempts", 0) + 1,
+        "automation_feedback": ""
     }
 
 
@@ -185,6 +210,32 @@ def save_test_automated_tests(state: TestState):
         file.write(state["test_code"])
     return {}
 
+def automation_review(state: TestState):
+
+    userfeedback = interrupt({
+        "type": "automation_code_review",
+        "message": "Review generated Playwright code",
+        "test_code": state["test_code"]
+    })
+
+    return {
+        "automation_decision": userfeedback["decision"],
+        "automation_feedback": userfeedback.get("feedback", "")
+    }
+    
+def route_automation(state: TestState):
+    decision = state.get("automation_decision") or state.get("decision")
+
+    if decision == "approve":
+        return "approved"
+
+    if decision == "reject":
+        return "rejected"
+
+    if decision == "edit":
+        if state.get("automation_attempts", 0) >= 3:
+            return "rejected"
+        return "edit"
 
 def run_test(state: TestState):
     print(f"Running the generated test (attempt {state['automation_attempts']})...")
@@ -251,8 +302,10 @@ builder.add_node("human_review", human_review)
 
 builder.add_node("save_testcases", save_testcases)
 builder.add_node("read_page", read_page)
-builder.add_node("generate_autopmated_tests", generate_autopmated_tests)
+builder.add_node("generate_automated_tests", generate_automated_tests)
 builder.add_node("save_test_automated_tests", save_test_automated_tests)
+builder.add_node("automation_review", automation_review)
+
 builder.add_node("run_test", run_test)
 builder.add_node("fix_test", fix_test)
 
@@ -269,14 +322,26 @@ builder.add_conditional_edges(
 
 builder.add_edge("validate_testcases", "human_review")
 builder.add_edge("save_testcases", "read_page")
-builder.add_edge("read_page", "generate_autopmated_tests")
-builder.add_edge("generate_autopmated_tests", "save_test_automated_tests")
+builder.add_edge("read_page", "generate_automated_tests")
+builder.add_edge("generate_automated_tests","automation_review"
+)
+builder.add_conditional_edges("automation_review",
+                        route_automation,
+                        {
+                        "approved": "save_test_automated_tests", 
+                        "rejected": END, 
+                        "edit": "generate_automated_tests", 
+                        })
 builder.add_edge("save_test_automated_tests", "run_test")
+
+
 builder.add_conditional_edges(
     "run_test",
     route_test_result,
-    {"finished": END, "fix": "fix_test"},
-)
+    {
+      "finished": END, 
+     "fix": "fix_test"},
+    )
 builder.add_edge("fix_test", "save_test_automated_tests")
 
 
@@ -286,7 +351,7 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..
 automated_output_file = os.path.join(
     project_root, "tests", "generated_automated", "test_login.spec.ts"
 )
-app_url = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+app_url = "https://practicetestautomation.com/practice-test-login/"
 
 graph = builder.compile(checkpointer=MemorySaver())
 config = {"configurable": {"thread_id": "qa-auto-001"}}
@@ -305,16 +370,39 @@ print(graph.get_graph().draw_ascii())
 snap = graph.get_state(config)
 
 while snap.next:
-    decision = input("Enter approve, edit, or reject: ").strip().lower()
+    interrupts = [
+        intr
+        for task in snap.tasks
+        for intr in task.interrupts
+    ]
+
+    if not interrupts:
+        break
+
+    interrupt_data = interrupts[0].value
+    print("interrupt_data[0]", interrupt_data)
+
+    review_type = interrupt_data["type"]
+    if review_type == "manual_testcase_review":
+        print("\nGenerated Manual Test Cases:")
+        print(interrupt_data["test_cases"])
+    elif review_type == "automation_code_review":
+        print("\nGenerated Automation Code:")
+        print(interrupt_data["test_code"])
+
+    decision = input("\nEnter approve, edit, or reject: ").strip().lower()
     while decision not in {"approve", "edit", "reject"}:
-        decision = input("Please enter approve, edit, or reject: ").strip().lower()
+        decision = input("Enter approve, edit, or reject: ").strip().lower()
 
     feedback = ""
     if decision == "edit":
-        feedback = input("Enter feedback for the edit: ")
+        feedback = input("Enter your feedback... ").strip()
 
     result = graph.invoke(
-        Command(resume={"decision": decision, "feedback": feedback}),
+        Command(resume={
+            "decision": decision,
+            "feedback": feedback,
+        }),
         config=config,
     )
     snap = graph.get_state(config)
