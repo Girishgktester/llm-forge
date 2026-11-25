@@ -1,0 +1,19 @@
+{
+  "test_cases": [
+    {
+      "test_case_id": "TC001",
+      "title": "Verify login with valid credentials navigates to the dashboard",
+      "test_data": {
+        "username": "Admin",
+        "password": "admin123"
+      },
+      "steps": [
+        "Navigate to the OrangeHRM login page",
+        "Enter the provided username and password",
+        "Submit the login form"
+      ],
+      "expected_result": "The user is navigated to the dashboard",
+      "actual_result": ""
+    }
+  ]
+}
