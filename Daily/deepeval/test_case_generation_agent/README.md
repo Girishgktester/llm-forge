@@ -79,10 +79,20 @@ If edit is selected when attempts >= 3:
     edit ──> END (rejected)
 ```
 
+## Run the practice workflow
+
+Set `OPENAI_API_KEY` and optionally `LLM_MODEL`, then run:
+
+```bash
+python TC_generator_practice.py
+```
+
+The workflow pauses for `approve`, `edit`, or `reject`. An edit can include feedback and is retried up to three attempts. Approval writes validated JSON to `output/test_cases.json`; rejection exits without saving.
+
 ## Retry behavior
 
 - The first generation creates one test case.
-- `edit` sends reviewer feedback back to `testcase_generator`.
+- `edit` sends reviewer feedback back to the generator.
 - Regeneration stops after three attempts and routes to rejection.
 - `approve` writes the generated JSON to `output/test_cases.json`.
 - `reject` ends the workflow without saving the test cases.
